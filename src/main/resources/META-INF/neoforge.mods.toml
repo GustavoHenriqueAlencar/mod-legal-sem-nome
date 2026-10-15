@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="All Rights Reserved"
+
+[[mods]]
+modId="occultum"
+version="1.0.0"
+displayName="Occultum"
+description="Um sistema profundo de magia, ocultismo, botânica mística e alquimia para NeoForge."
+authors="Occultum Development Team"
+
+[[dependencies.occultum]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.occultum]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,)"
+ordering="NONE"
+side="BOTH"

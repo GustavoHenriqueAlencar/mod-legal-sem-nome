@@ -1,0 +1,25 @@
+# Gradle
+.gradle/
+build/
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# System
+Thumbs.db
+.DS_Store
+
+# Minecraft Run & Datagen Cache
+run/
+src/generated/resources/.cache/
+
+# Specs & Docs
+clean_room_specs/
+*.md
+!README.md
+
+

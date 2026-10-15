@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "ingredients": [
+    {
+      "item": "occultum:rowan_log"
+    }
+  ],
+  "result": {
+    "count": 4,
+    "id": "occultum:rowan_planks"
+  }
+}

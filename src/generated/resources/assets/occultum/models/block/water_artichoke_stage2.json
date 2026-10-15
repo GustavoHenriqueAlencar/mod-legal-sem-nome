@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cross",
+  "textures": {
+    "cross": "occultum:block/water_artichoke_stage2"
+  }
+}

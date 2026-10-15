@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "occultum:block/alder_wood_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "occultum:block/alder_wood"
+    },
+    "axis=z": {
+      "model": "occultum:block/alder_wood_horizontal",
+      "x": 90
+    }
+  }
+}

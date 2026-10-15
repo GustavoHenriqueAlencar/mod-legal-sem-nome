@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "occultum:block/stripped_rowan_log",
+    "side": "occultum:block/stripped_rowan_log"
+  }
+}
