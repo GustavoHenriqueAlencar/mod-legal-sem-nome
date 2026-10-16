@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "occultum:item/ghost_of_the_light"
+  }
+}

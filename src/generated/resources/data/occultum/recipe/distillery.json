@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "occultum:attuned_stone"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "J": {
+      "item": "occultum:clay_jar"
+    }
+  },
+  "pattern": [
+    "IJI",
+    "IAI",
+    "GGG"
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:distillery"
+  }
+}

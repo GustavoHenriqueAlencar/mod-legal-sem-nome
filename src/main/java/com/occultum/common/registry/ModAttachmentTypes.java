@@ -42,6 +42,16 @@ public class ModAttachmentTypes {
                     .serialize(Codec.STRING)
                     .build());
 
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<String>> FAMILIAR_TYPE =
+            ATTACHMENT_TYPES.register("familiar_type", () -> AttachmentType.builder(() -> "")
+                    .serialize(Codec.STRING)
+                    .build());
+
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<Integer>> BOTTLING_XP =
+            ATTACHMENT_TYPES.register("bottling_xp", () -> AttachmentType.builder(() -> 0)
+                    .serialize(Codec.INT)
+                    .build());
+
     public static void register(IEventBus eventBus) {
         ATTACHMENT_TYPES.register(eventBus);
     }

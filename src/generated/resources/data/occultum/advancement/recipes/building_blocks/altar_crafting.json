@@ -1,11 +1,11 @@
 {
   "parent": "minecraft:recipes/root",
   "criteria": {
-    "has_stone_bricks": {
+    "has_breath": {
       "conditions": {
         "items": [
           {
-            "items": "minecraft:stone_bricks"
+            "items": "occultum:breath_of_the_goddess"
           }
         ]
       },
@@ -21,7 +21,7 @@
   "requirements": [
     [
       "has_the_recipe",
-      "has_stone_bricks"
+      "has_breath"
     ]
   ],
   "rewards": {

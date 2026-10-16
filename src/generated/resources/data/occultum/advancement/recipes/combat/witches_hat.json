@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fanciful_thread": {
+      "conditions": {
+        "items": [
+          {
+            "items": "occultum:fanciful_thread"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "occultum:witches_hat"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fanciful_thread"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "occultum:witches_hat"
+    ]
+  }
+}

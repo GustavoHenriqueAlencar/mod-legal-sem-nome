@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "occultum:attuned_stone"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_whiff": {
+      "conditions": {
+        "items": [
+          {
+            "items": "occultum:whiff_of_magic"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_whiff"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "occultum:attuned_stone"
+    ]
+  }
+}

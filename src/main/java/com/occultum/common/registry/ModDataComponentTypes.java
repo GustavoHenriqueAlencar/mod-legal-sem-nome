@@ -2,6 +2,7 @@ package com.occultum.common.registry;
 
 import com.mojang.serialization.Codec;
 import com.occultum.OccultumMod;
+import com.occultum.common.machine.cauldron.CauldronPotionData;
 import net.minecraft.core.GlobalPos;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.core.registries.Registries;
@@ -31,6 +32,12 @@ public class ModDataComponentTypes {
     public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> CAPTURED_CRITTER =
             DATA_COMPONENT_TYPES.register("captured_critter", () -> DataComponentType.<String>builder()
                     .persistent(Codec.STRING)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<CauldronPotionData>> CAULDRON_POTION =
+            DATA_COMPONENT_TYPES.register("cauldron_potion", () -> DataComponentType.<CauldronPotionData>builder()
+                    .persistent(CauldronPotionData.CODEC)
+                    .networkSynchronized(CauldronPotionData.STREAM_CODEC)
                     .build());
 
     public static void register(IEventBus eventBus) {

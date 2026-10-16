@@ -4,9 +4,7 @@ import com.occultum.OccultumMod;
 import com.occultum.common.botany.crop.BaseWitchCropBlock;
 import com.occultum.common.registry.ModBlocks;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CropBlock;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -79,6 +77,27 @@ public class OccultumBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.EMBER_BRAMBLE.get(), models().cubeAll("ember_bramble", modLoc("block/ember_bramble")));
         simpleBlock(ModBlocks.LEECH_CHEST.get(), models().cubeAll("leech_chest", modLoc("block/leech_chest")));
         simpleBlock(ModBlocks.EMBER_MOSS.get(), models().cubeAll("ember_moss", modLoc("block/ember_moss")));
+
+        // Sprint 2 Machines, Chalks, Pit Blocks & Fluids
+        simpleBlock(ModBlocks.WITCHES_OVEN.get(), models().cubeAll("witches_oven", modLoc("block/witches_oven")));
+        simpleBlock(ModBlocks.FUME_FUNNEL.get(), models().cubeAll("fume_funnel", modLoc("block/fume_funnel")));
+        simpleBlock(ModBlocks.FILTERED_FUME_FUNNEL.get(), models().cubeAll("filtered_fume_funnel", modLoc("block/filtered_fume_funnel")));
+        simpleBlock(ModBlocks.DISTILLERY.get(), models().cubeAll("distillery", modLoc("block/distillery")));
+        simpleBlock(ModBlocks.SPINNING_WHEEL.get(), models().cubeAll("spinning_wheel", modLoc("block/spinning_wheel")));
+        simpleBlock(ModBlocks.KETTLE.get(), models().cubeAll("kettle", modLoc("block/kettle")));
+        simpleBlock(ModBlocks.WITCHES_CAULDRON.get(), models().cubeAll("witches_cauldron", modLoc("block/witches_cauldron")));
+        simpleBlock(ModBlocks.BRAZIER.get(), models().cubeAll("brazier", modLoc("block/brazier")));
+        simpleBlock(ModBlocks.PIT_GRASS.get(), models().cubeAll("pit_grass", modLoc("block/pit_grass")));
+        simpleBlock(ModBlocks.PIT_DIRT.get(), models().cubeAll("pit_dirt", modLoc("block/pit_dirt")));
+
+        simpleBlock(ModBlocks.RITUAL_CHALK_BLOCK.get(), models().carpet("ritual_chalk_block", modLoc("block/ritual_chalk_block")));
+        simpleBlock(ModBlocks.GOLDEN_CHALK_BLOCK.get(), models().carpet("golden_chalk_block", modLoc("block/golden_chalk_block")));
+        simpleBlock(ModBlocks.INFERNAL_CHALK_BLOCK.get(), models().carpet("infernal_chalk_block", modLoc("block/infernal_chalk_block")));
+        simpleBlock(ModBlocks.OTHERWHERE_CHALK_BLOCK.get(), models().carpet("otherwhere_chalk_block", modLoc("block/otherwhere_chalk_block")));
+
+        simpleBlock(ModBlocks.FLOWING_SPIRIT_BLOCK.get(), models().cubeAll("flowing_spirit_block", modLoc("block/flowing_spirit_block")));
+        simpleBlock(ModBlocks.HOLLOW_TEARS_BLOCK.get(), models().cubeAll("hollow_tears_block", modLoc("block/hollow_tears_block")));
+        simpleBlock(ModBlocks.DISEASE_LIQUID_BLOCK.get(), models().cubeAll("disease_liquid_block", modLoc("block/disease_liquid_block")));
     }
 
     private void crossBlock(Block block) {

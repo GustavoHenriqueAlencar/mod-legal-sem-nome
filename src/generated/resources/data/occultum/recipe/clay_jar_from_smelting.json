@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "occultum:soft_clay_jar"
+  },
+  "result": {
+    "count": 1,
+    "id": "occultum:clay_jar"
+  }
+}

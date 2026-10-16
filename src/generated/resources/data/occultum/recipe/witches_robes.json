@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "G": {
+      "item": "occultum:golden_thread"
+    },
+    "L": {
+      "item": "minecraft:leather"
+    }
+  },
+  "pattern": [
+    "L L",
+    "LGL",
+    "LLL"
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:witches_robes"
+  }
+}

@@ -55,9 +55,14 @@ public class AltarPowerNetwork {
      * @return true se a energia foi debitada com sucesso, false caso contrário.
      */
     public static boolean consumePower(Level level, BlockPos consumerPos, int amount) {
-        if (level.isClientSide) return false;
+        return consumePower(level, consumerPos, (double) amount);
+    }
 
-        // Regra 7.1: Se o consumidor estiver dentro de 32 blocos de um Espinho do Vazio, falha imediatamente
+    public static boolean consumePower(Level level, BlockPos consumerPos, double amount) {
+        if (level.isClientSide) return false;
+        if (amount <= 0.0D) return true;
+
+        // Se o consumidor estiver dentro de 32 blocos de um Espinho do Vazio, falha imediatamente
         if (isSuppressedByVoidBramble(level, consumerPos)) {
             return false;
         }
@@ -70,6 +75,10 @@ public class AltarPowerNetwork {
     }
 
     public static AltarBlockEntity findNearestAvailableAltar(Level level, BlockPos consumerPos, int minPower) {
+        return findNearestAvailableAltar(level, consumerPos, (double) minPower);
+    }
+
+    public static AltarBlockEntity findNearestAvailableAltar(Level level, BlockPos consumerPos, double minPower) {
         Set<BlockPos> altars = ACTIVE_ALTARS.get(level.dimension());
         if (altars == null || altars.isEmpty()) return null;
 
@@ -80,7 +89,7 @@ public class AltarPowerNetwork {
             BlockPos altarPos = iterator.next();
             BlockEntity be = level.getBlockEntity(altarPos);
             if (be instanceof AltarBlockEntity altar && altar.isFormed()) {
-                // Regra 7.1: Se o altar estiver dentro de 32 blocos de um Espinho do Vazio, ele não consegue operar
+                // Se o altar estiver dentro de 32 blocos de um Espinho do Vazio, ele não consegue operar
                 if (isSuppressedByVoidBramble(level, altarPos)) {
                     continue;
                 }
@@ -88,7 +97,7 @@ public class AltarPowerNetwork {
                 double distSq = altarPos.distSqr(consumerPos);
                 int maxRadius = 16 * altar.getRangeMultiplier();
                 if (distSq <= (double) (maxRadius * maxRadius)) {
-                    if (altar.getCurrentPower() >= minPower) {
+                    if (altar.getCurrentPowerExact() + 1e-6D >= minPower) {
                         candidateAltars.add(altar);
                     }
                 }

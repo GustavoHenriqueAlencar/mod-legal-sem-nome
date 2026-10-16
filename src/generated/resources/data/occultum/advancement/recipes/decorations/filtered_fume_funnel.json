@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_fume_funnel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "occultum:fume_funnel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "occultum:filtered_fume_funnel"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_fume_funnel"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "occultum:filtered_fume_funnel"
+    ]
+  }
+}

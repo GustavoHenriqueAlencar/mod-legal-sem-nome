@@ -1,14 +1,11 @@
 package com.occultum.datagen;
 
 import com.occultum.common.registry.ModBlocks;
-import com.occultum.common.registry.ModItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 
-import java.util.Collections;
 import java.util.Set;
 
 public class OccultumBlockLootSubProvider extends BlockLootSubProvider {
@@ -60,7 +57,23 @@ public class OccultumBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.GLINT_WEED.get());
         dropSelf(ModBlocks.BLOOD_ROSE.get());
 
-        // Drops controlados por lógica específica no bloco (playerWillDestroy / tesoura / maturação)
+        // Sprint 2 Machines, Chalks & Pit Blocks
+        dropSelf(ModBlocks.WITCHES_OVEN.get());
+        dropSelf(ModBlocks.FUME_FUNNEL.get());
+        dropSelf(ModBlocks.FILTERED_FUME_FUNNEL.get());
+        dropSelf(ModBlocks.DISTILLERY.get());
+        dropSelf(ModBlocks.SPINNING_WHEEL.get());
+        dropSelf(ModBlocks.KETTLE.get());
+        dropSelf(ModBlocks.WITCHES_CAULDRON.get());
+        dropSelf(ModBlocks.BRAZIER.get());
+        dropSelf(ModBlocks.PIT_GRASS.get());
+        dropSelf(ModBlocks.PIT_DIRT.get());
+        dropSelf(ModBlocks.RITUAL_CHALK_BLOCK.get());
+        dropSelf(ModBlocks.GOLDEN_CHALK_BLOCK.get());
+        dropSelf(ModBlocks.INFERNAL_CHALK_BLOCK.get());
+        dropSelf(ModBlocks.OTHERWHERE_CHALK_BLOCK.get());
+
+        // Drops controlados por lógica específica no bloco
         add(ModBlocks.SPANISH_MOSS.get(), noDrop());
         add(ModBlocks.EMBER_MOSS.get(), noDrop());
         add(ModBlocks.BELLADONNA_CROP.get(), noDrop());
@@ -74,6 +87,11 @@ public class OccultumBlockLootSubProvider extends BlockLootSubProvider {
 
     @Override
     protected Iterable<Block> getKnownBlocks() {
-        return ModBlocks.BLOCKS.getEntries().stream().map(h -> (Block) h.get())::iterator;
+        return ModBlocks.BLOCKS.getEntries().stream()
+                .map(h -> (Block) h.get())
+                .filter(b -> b != ModBlocks.FLOWING_SPIRIT_BLOCK.get()
+                        && b != ModBlocks.HOLLOW_TEARS_BLOCK.get()
+                        && b != ModBlocks.DISEASE_LIQUID_BLOCK.get())
+                ::iterator;
     }
 }

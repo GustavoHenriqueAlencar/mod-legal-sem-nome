@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "equipment",
+  "ingredients": [
+    {
+      "item": "occultum:wood_ash"
+    },
+    {
+      "item": "occultum:gypsum"
+    },
+    {
+      "item": "occultum:tear_of_the_goddess"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "id": "occultum:ritual_chalk"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": [
+    {
+      "item": "occultum:rowan_sapling"
+    },
+    {
+      "item": "occultum:alder_sapling"
+    },
+    {
+      "item": "occultum:hawthorn_sapling"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:wood_ash"
+  }
+}

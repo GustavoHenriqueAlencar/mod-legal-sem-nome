@@ -3,19 +3,19 @@
   "category": "building",
   "key": {
     "B": {
-      "item": "minecraft:stone_bricks"
-    },
-    "R": {
-      "item": "minecraft:redstone"
+      "item": "occultum:breath_of_the_goddess"
     },
     "S": {
-      "item": "minecraft:stone"
+      "item": "minecraft:smooth_stone"
+    },
+    "T": {
+      "item": "minecraft:stone_bricks"
     }
   },
   "pattern": [
-    "SRS",
     "SBS",
-    "BBB"
+    "STS",
+    "TTT"
   ],
   "result": {
     "count": 3,

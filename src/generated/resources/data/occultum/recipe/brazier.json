@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "occultum:attuned_stone"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "pattern": [
+    "IAI",
+    " I ",
+    "III"
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:brazier"
+  }
+}

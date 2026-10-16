@@ -22,6 +22,7 @@ public class OccultumMod {
         modContainer.registerConfig(ModConfig.Type.CLIENT, OccultumConfig.CLIENT_SPEC);
 
         // Registrar Registros Diferidos
+        ModFluids.register(modEventBus);
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
         ModBlockEntities.register(modEventBus);

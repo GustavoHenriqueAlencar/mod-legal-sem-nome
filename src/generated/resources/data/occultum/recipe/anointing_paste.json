@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "occultum:belladonna_seeds"
+    },
+    {
+      "item": "occultum:mandrake_seeds"
+    },
+    {
+      "item": "occultum:water_artichoke_seeds"
+    },
+    {
+      "item": "occultum:snowbell_seeds"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:anointing_paste"
+  }
+}

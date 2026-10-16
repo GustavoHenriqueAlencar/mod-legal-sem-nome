@@ -9,7 +9,14 @@ import com.occultum.common.botany.tree.MysticLeavesBlock;
 import com.occultum.common.botany.tree.MysticLogBlock;
 import com.occultum.common.botany.tree.MysticSaplingBlock;
 import com.occultum.common.botany.wild.*;
-import net.minecraft.core.registries.Registries;
+import com.occultum.common.fluid.OccultumFluidBlocks;
+import com.occultum.common.machine.brazier.BrazierBlock;
+import com.occultum.common.machine.cauldron.WitchesCauldronBlock;
+import com.occultum.common.machine.distillery.DistilleryBlock;
+import com.occultum.common.machine.kettle.KettleBlock;
+import com.occultum.common.machine.oven.FumeFunnelBlock;
+import com.occultum.common.machine.oven.WitchesOvenBlock;
+import com.occultum.common.machine.spinningwheel.SpinningWheelBlock;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -276,6 +283,131 @@ public class ModBlocks {
                     .mapColor(MapColor.SNOW)
                     .noCollission()
                     .instabreak()));
+
+    // Sprint 2: Máquinas, Alquimia, Braseiro e Fluidos
+    public static final DeferredBlock<WitchesOvenBlock> WITCHES_OVEN =
+            BLOCKS.register("witches_oven", () -> new WitchesOvenBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .strength(3.5F)
+                    .noOcclusion()
+                    .lightLevel(state -> state.getValue(WitchesOvenBlock.LIT) ? 13 : 0)));
+
+    public static final DeferredBlock<FumeFunnelBlock> FUME_FUNNEL =
+            BLOCKS.register("fume_funnel", () -> new FumeFunnelBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .strength(3.0F)
+                    .noOcclusion(), false));
+
+    public static final DeferredBlock<FumeFunnelBlock> FILTERED_FUME_FUNNEL =
+            BLOCKS.register("filtered_fume_funnel", () -> new FumeFunnelBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .strength(3.0F)
+                    .noOcclusion(), true));
+
+    public static final DeferredBlock<DistilleryBlock> DISTILLERY =
+            BLOCKS.register("distillery", () -> new DistilleryBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .strength(3.5F)
+                    .noOcclusion()));
+
+    public static final DeferredBlock<SpinningWheelBlock> SPINNING_WHEEL =
+            BLOCKS.register("spinning_wheel", () -> new SpinningWheelBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(2.5F)
+                    .noOcclusion()));
+
+    public static final DeferredBlock<KettleBlock> KETTLE =
+            BLOCKS.register("kettle", () -> new KettleBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .strength(3.0F)
+                    .noOcclusion()));
+
+    public static final DeferredBlock<WitchesCauldronBlock> WITCHES_CAULDRON =
+            BLOCKS.register("witches_cauldron", () -> new WitchesCauldronBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .strength(3.5F)
+                    .noOcclusion()));
+
+    public static final DeferredBlock<BrazierBlock> BRAZIER =
+            BLOCKS.register("brazier", () -> new BrazierBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.METAL)
+                    .strength(3.0F)
+                    .noOcclusion()
+                    .lightLevel(state -> state.getValue(BrazierBlock.LIT) ? 14 : 0)));
+
+    public static final DeferredBlock<Block> PIT_GRASS =
+            BLOCKS.register("pit_grass", () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.GRASS)
+                    .strength(0.5F)
+                    .noCollission()));
+
+    public static final DeferredBlock<Block> PIT_DIRT =
+            BLOCKS.register("pit_dirt", () -> new Block(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DIRT)
+                    .strength(0.5F)
+                    .noCollission()));
+
+    public static final DeferredBlock<CarpetBlock> RITUAL_CHALK_BLOCK =
+            BLOCKS.register("ritual_chalk_block", () -> new CarpetBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.QUARTZ)
+                    .noCollission()
+                    .instabreak()));
+
+    public static final DeferredBlock<CarpetBlock> GOLDEN_CHALK_BLOCK =
+            BLOCKS.register("golden_chalk_block", () -> new CarpetBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.GOLD)
+                    .noCollission()
+                    .instabreak()));
+
+    public static final DeferredBlock<CarpetBlock> INFERNAL_CHALK_BLOCK =
+            BLOCKS.register("infernal_chalk_block", () -> new CarpetBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_RED)
+                    .noCollission()
+                    .instabreak()));
+
+    public static final DeferredBlock<CarpetBlock> OTHERWHERE_CHALK_BLOCK =
+            BLOCKS.register("otherwhere_chalk_block", () -> new CarpetBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .noCollission()
+                    .instabreak()));
+
+    // Fluidos Customizados
+    public static final DeferredBlock<OccultumFluidBlocks.FlowingSpiritBlock> FLOWING_SPIRIT_BLOCK =
+            BLOCKS.register("flowing_spirit_block", () -> new OccultumFluidBlocks.FlowingSpiritBlock(
+                    ModFluids.FLOWING_SPIRIT,
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_LIGHT_BLUE)
+                            .replaceable()
+                            .noCollission()
+                            .strength(100.0F)
+                            .pushReaction(PushReaction.DESTROY)
+                            .noLootTable()
+                            .liquid()));
+
+    public static final DeferredBlock<OccultumFluidBlocks.HollowTearsBlock> HOLLOW_TEARS_BLOCK =
+            BLOCKS.register("hollow_tears_block", () -> new OccultumFluidBlocks.HollowTearsBlock(
+                    ModFluids.HOLLOW_TEARS,
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_CYAN)
+                            .replaceable()
+                            .noCollission()
+                            .strength(100.0F)
+                            .pushReaction(PushReaction.DESTROY)
+                            .noLootTable()
+                            .liquid()));
+
+    public static final DeferredBlock<OccultumFluidBlocks.DiseaseLiquidBlock> DISEASE_LIQUID_BLOCK =
+            BLOCKS.register("disease_liquid_block", () -> new OccultumFluidBlocks.DiseaseLiquidBlock(
+                    ModFluids.DISEASE_LIQUID,
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_BROWN)
+                            .replaceable()
+                            .noCollission()
+                            .randomTicks()
+                            .strength(100.0F)
+                            .pushReaction(PushReaction.DESTROY)
+                            .noLootTable()
+                            .liquid()));
 
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);

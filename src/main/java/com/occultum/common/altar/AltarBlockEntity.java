@@ -27,7 +27,7 @@ public class AltarBlockEntity extends BlockEntity {
     private BlockPos corePos = BlockPos.ZERO;
     private final List<BlockPos> altarBlocks = new ArrayList<>();
 
-    private int currentPower = 0;
+    private double currentPower = 0.0D;
     private int basePower = 0;
     private int maxPower = 0;
 
@@ -51,16 +51,14 @@ public class AltarBlockEntity extends BlockEntity {
         altar.ticksSinceLastScan++;
         altar.rechargeTimer++;
 
-        // Rotina periódica de 20 ticks (1 segundo real)
+        // Rotina periódica de 20 ticks (1 segundo real): P_atual = min(P_atual + 10 * M_rec, P_max), onde P_max = P_base * M_cap
         if (altar.rechargeTimer >= 20) {
             altar.rechargeTimer = 0;
 
-            // Recalcula teto e recarrega
             altar.maxPower = altar.basePower * altar.capMultiplier;
-            int rechargeAmount = 10 * altar.rechargeMultiplier;
-            altar.currentPower = Math.min(altar.currentPower + rechargeAmount, altar.maxPower);
+            double rechargeAmount = 10.0D * altar.rechargeMultiplier;
+            altar.currentPower = Math.min(altar.currentPower + rechargeAmount, (double) altar.maxPower);
 
-            // Limitador superior: se por alteração ambiental superou o teto, trunca
             if (altar.currentPower > altar.maxPower) {
                 altar.currentPower = altar.maxPower;
             }
@@ -73,7 +71,7 @@ public class AltarBlockEntity extends BlockEntity {
     public static void clientTick(Level level, BlockPos pos, BlockState state, AltarBlockEntity altar) {
         if (!altar.isFormed || !altar.isCore()) return;
 
-        // Efeito visual particular no cliente (Seção 7.4):
+        // Efeito visual particular no cliente:
         // Seleciona aleatoriamente coordenadas no volume X +- 16, Y +- 4, Z +- 16
         if (level.random.nextInt(3) == 0) {
             int rx = pos.getX() + level.random.nextInt(33) - 16;
@@ -122,7 +120,7 @@ public class AltarBlockEntity extends BlockEntity {
         }
 
         this.isFormed = false;
-        this.currentPower = 0;
+        this.currentPower = 0.0D;
         this.basePower = 0;
         this.maxPower = 0;
         this.capMultiplier = 1;
@@ -152,7 +150,7 @@ public class AltarBlockEntity extends BlockEntity {
         // 2. Varredura dos 24.389 blocos cúbicos (29x29x29)
         this.basePower = AltarNatureScanner.scanNatureVolume(level, this.corePos);
 
-        // 3. Cálculo da capacidade máxima efetiva
+        // 3. Cálculo da capacidade máxima efetiva: P_max = P_base * M_cap
         this.maxPower = this.basePower * this.capMultiplier;
         if (this.currentPower > this.maxPower) {
             this.currentPower = this.maxPower;
@@ -163,9 +161,13 @@ public class AltarBlockEntity extends BlockEntity {
     }
 
     public boolean tryConsumePower(int cost) {
-        if (cost <= 0) return true;
-        if (this.currentPower >= cost) {
-            this.currentPower -= cost;
+        return tryConsumePower((double) cost);
+    }
+
+    public boolean tryConsumePower(double cost) {
+        if (cost <= 0.0D) return true;
+        if (this.currentPower + 1e-6D >= cost) {
+            this.currentPower = Math.max(0.0D, this.currentPower - cost);
             setChanged();
             if (level != null) {
                 level.sendBlockUpdated(worldPosition, getBlockState(), getBlockState(), 3);
@@ -184,6 +186,10 @@ public class AltarBlockEntity extends BlockEntity {
     }
 
     public int getCurrentPower() {
+        return (int) Math.floor(currentPower + 1e-6D);
+    }
+
+    public double getCurrentPowerExact() {
         return currentPower;
     }
 
@@ -216,7 +222,7 @@ public class AltarBlockEntity extends BlockEntity {
         super.saveAdditional(tag, registries);
         tag.putBoolean("IsFormed", isFormed);
         tag.put("CorePos", NbtUtils.writeBlockPos(corePos));
-        tag.putInt("CurrentPower", currentPower);
+        tag.putDouble("CurrentPower", currentPower);
         tag.putInt("BasePower", basePower);
         tag.putInt("MaxPower", maxPower);
         tag.putInt("CapMultiplier", capMultiplier);
@@ -238,7 +244,7 @@ public class AltarBlockEntity extends BlockEntity {
         if (tag.contains("CorePos")) {
             corePos = NbtUtils.readBlockPos(tag, "CorePos").orElse(BlockPos.ZERO);
         }
-        currentPower = tag.getInt("CurrentPower");
+        currentPower = tag.getDouble("CurrentPower");
         basePower = tag.getInt("BasePower");
         maxPower = tag.getInt("MaxPower");
         capMultiplier = tag.getInt("CapMultiplier");

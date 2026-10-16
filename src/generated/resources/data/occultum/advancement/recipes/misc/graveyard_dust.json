@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_foul_fume": {
+      "conditions": {
+        "items": [
+          {
+            "items": "occultum:foul_fume"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "occultum:graveyard_dust"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_foul_fume"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "occultum:graveyard_dust"
+    ]
+  }
+}

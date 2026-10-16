@@ -6,6 +6,12 @@ import com.occultum.common.altar.GrassperBlockEntity;
 import com.occultum.common.botany.wild.BloodRoseBlockEntity;
 import com.occultum.common.botany.wild.CritterSnareBlockEntity;
 import com.occultum.common.botany.wild.LeechChestBlockEntity;
+import com.occultum.common.machine.brazier.BrazierBlockEntity;
+import com.occultum.common.machine.cauldron.WitchesCauldronBlockEntity;
+import com.occultum.common.machine.distillery.DistilleryBlockEntity;
+import com.occultum.common.machine.kettle.KettleBlockEntity;
+import com.occultum.common.machine.oven.WitchesOvenBlockEntity;
+import com.occultum.common.machine.spinningwheel.SpinningWheelBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -44,6 +50,47 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("leech_chest", () -> BlockEntityType.Builder.of(
                     LeechChestBlockEntity::new,
                     ModBlocks.LEECH_CHEST.get()
+            ).build(null));
+
+    // Sprint 2 Block Entities
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WitchesOvenBlockEntity>> WITCHES_OVEN =
+            BLOCK_ENTITIES.register("witches_oven", () -> BlockEntityType.Builder.of(
+                    WitchesOvenBlockEntity::new,
+                    ModBlocks.WITCHES_OVEN.get()
+            ).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WitchesOvenBlockEntity>> WITCHES_OVEN_BE = WITCHES_OVEN;
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DistilleryBlockEntity>> DISTILLERY =
+            BLOCK_ENTITIES.register("distillery", () -> BlockEntityType.Builder.of(
+                    DistilleryBlockEntity::new,
+                    ModBlocks.DISTILLERY.get()
+            ).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<DistilleryBlockEntity>> DISTILLERY_BE = DISTILLERY;
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SpinningWheelBlockEntity>> SPINNING_WHEEL =
+            BLOCK_ENTITIES.register("spinning_wheel", () -> BlockEntityType.Builder.of(
+                    SpinningWheelBlockEntity::new,
+                    ModBlocks.SPINNING_WHEEL.get()
+            ).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<SpinningWheelBlockEntity>> SPINNING_WHEEL_BE = SPINNING_WHEEL;
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<KettleBlockEntity>> KETTLE =
+            BLOCK_ENTITIES.register("kettle", () -> BlockEntityType.Builder.of(
+                    KettleBlockEntity::new,
+                    ModBlocks.KETTLE.get()
+            ).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<KettleBlockEntity>> KETTLE_BE = KETTLE;
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<WitchesCauldronBlockEntity>> WITCHES_CAULDRON =
+            BLOCK_ENTITIES.register("witches_cauldron", () -> BlockEntityType.Builder.of(
+                    WitchesCauldronBlockEntity::new,
+                    ModBlocks.WITCHES_CAULDRON.get()
+            ).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<BrazierBlockEntity>> BRAZIER =
+            BLOCK_ENTITIES.register("brazier", () -> BlockEntityType.Builder.of(
+                    BrazierBlockEntity::new,
+                    ModBlocks.BRAZIER.get()
             ).build(null));
 
     public static void register(IEventBus eventBus) {
