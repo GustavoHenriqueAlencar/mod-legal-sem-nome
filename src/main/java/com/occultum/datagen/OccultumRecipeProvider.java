@@ -478,5 +478,169 @@ public class OccultumRecipeProvider extends RecipeProvider {
                 .define('W', Items.WHEAT)
                 .unlockedBy("has_hawthorn_sapling", has(ModBlocks.HAWTHORN_SAPLING.get()))
                 .save(recipeOutput);
+
+        // =========================================================================
+        // SPRINT 4: VAMPIRISMO, LICANTROPIA, APANHADORES DE SONHOS E ESPELHO
+        // =========================================================================
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.GLASS_GOBLET.get(), 1)
+                .pattern("G G")
+                .pattern(" G ")
+                .pattern(" G ")
+                .define('G', Blocks.GLASS)
+                .unlockedBy("has_glass", has(Blocks.GLASS))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.WOODEN_STAKE.get(), 1)
+                .pattern("  S")
+                .pattern(" P ")
+                .pattern("S  ")
+                .define('S', Items.STICK)
+                .define('P', ModBlocks.HAWTHORN_PLANKS.get())
+                .unlockedBy("has_hawthorn_planks", has(ModBlocks.HAWTHORN_PLANKS.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.BLOOD_CRUCIBLE.get(), 1)
+                .pattern("N N")
+                .pattern("NDN")
+                .pattern("NNN")
+                .define('N', Blocks.NETHER_BRICKS)
+                .define('D', Items.DIAMOND)
+                .unlockedBy("has_nether_bricks", has(Blocks.NETHER_BRICKS))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.COFFIN.get(), 1)
+                .pattern("PPP")
+                .pattern("WWW")
+                .pattern("PPP")
+                .define('P', ModBlocks.ALDER_PLANKS.get())
+                .define('W', Blocks.RED_WOOL)
+                .unlockedBy("has_alder_planks", has(ModBlocks.ALDER_PLANKS.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.GARLIC_GARLAND.get(), 1)
+                .pattern("GGG")
+                .pattern("STS")
+                .define('G', ModItems.GARLIC.get())
+                .define('S', Items.STRING)
+                .define('T', ModItems.TORMENTED_TWINE.get())
+                .unlockedBy("has_garlic", has(ModItems.GARLIC.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SUN_COLLECTOR.get(), 1)
+                .pattern(" G ")
+                .pattern("GQG")
+                .pattern(" I ")
+                .define('G', Blocks.GLASS)
+                .define('Q', Items.QUARTZ)
+                .define('I', Items.GOLD_INGOT)
+                .unlockedBy("has_quartz", has(Items.QUARTZ))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.WOLF_ALTAR.get(), 1)
+                .pattern(" S ")
+                .pattern("SBS")
+                .pattern("SSS")
+                .define('S', Blocks.STONE_BRICKS)
+                .define('B', Items.BONE_BLOCK)
+                .unlockedBy("has_bone_block", has(Items.BONE_BLOCK))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.SILVER_SWORD.get(), 1)
+                .pattern(" D ")
+                .pattern("IDI")
+                .pattern(" S ")
+                .define('D', ModItems.SILVER_DUST.get())
+                .define('I', Items.IRON_INGOT)
+                .define('S', Items.STICK)
+                .unlockedBy("has_silver_dust", has(ModItems.SILVER_DUST.get()))
+                .save(recipeOutput);
+
+        // Os 5 Apanhadores de Sonhos (Dream Weavers - Seção 5.2 de 09_MUNDO_ESPIRITUAL_E_SONHOS.md)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.DREAM_WEAVER_FLEET_FOOT.get(), 1)
+                .pattern("TTT")
+                .pattern("FSF")
+                .pattern(" W ")
+                .define('T', ModItems.FANCIFUL_THREAD.get())
+                .define('F', Items.FEATHER)
+                .define('S', Items.STICK)
+                .define('W', ModItems.WISPY_COTTON.get())
+                .unlockedBy("has_wispy_cotton", has(ModItems.WISPY_COTTON.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.DREAM_WEAVER_IRON_ARM.get(), 1)
+                .pattern("TTT")
+                .pattern("ISI")
+                .pattern(" W ")
+                .define('T', ModItems.FANCIFUL_THREAD.get())
+                .define('I', Items.IRON_INGOT)
+                .define('S', Items.STICK)
+                .define('W', ModItems.WISPY_COTTON.get())
+                .unlockedBy("has_wispy_cotton", has(ModItems.WISPY_COTTON.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.DREAM_WEAVER_FASTING.get(), 1)
+                .pattern("TTT")
+                .pattern("MSM")
+                .pattern(" W ")
+                .define('T', ModItems.FANCIFUL_THREAD.get())
+                .define('M', ModItems.MELLIFLUOUS_HUNGER.get())
+                .define('S', Items.STICK)
+                .define('W', ModItems.WISPY_COTTON.get())
+                .unlockedBy("has_wispy_cotton", has(ModItems.WISPY_COTTON.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.DREAM_WEAVER_NIGHTMARES.get(), 1)
+                .pattern("TTT")
+                .pattern("DSD")
+                .pattern(" C ")
+                .define('T', ModItems.TORMENTED_TWINE.get())
+                .define('D', ModItems.DISTURBED_COTTON.get())
+                .define('S', Items.STICK)
+                .define('C', ModItems.REEK_OF_MISFORTUNE.get())
+                .unlockedBy("has_disturbed_cotton", has(ModItems.DISTURBED_COTTON.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.DREAM_WEAVER_INTENSITY.get(), 1)
+                .pattern("TTT")
+                .pattern("GSG")
+                .pattern(" W ")
+                .define('T', ModItems.GOLDEN_THREAD.get())
+                .define('G', Items.GLOWSTONE_DUST)
+                .define('S', Items.STICK)
+                .define('W', ModItems.WISPY_COTTON.get())
+                .unlockedBy("has_wispy_cotton", has(ModItems.WISPY_COTTON.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CHARM_OF_DISRUPTED_DREAMS.get(), 1)
+                .pattern(" G ")
+                .pattern("WMW")
+                .pattern(" D ")
+                .define('G', ModItems.GOLDEN_THREAD.get())
+                .define('W', ModItems.WISPY_COTTON.get())
+                .define('M', ModItems.MELLIFLUOUS_HUNGER.get())
+                .define('D', ModItems.DISTURBED_COTTON.get())
+                .unlockedBy("has_wispy_cotton", has(ModItems.WISPY_COTTON.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.QUARTZ_SPHERE.get(), 1)
+                .pattern(" Q ")
+                .pattern("QGQ")
+                .pattern(" Q ")
+                .define('Q', Items.QUARTZ)
+                .define('G', Blocks.GLASS)
+                .unlockedBy("has_quartz", has(Items.QUARTZ))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, ModItems.HAND_BOW.get(), 1)
+                .pattern("ISI")
+                .pattern(" T ")
+                .pattern(" H ")
+                .define('I', Items.IRON_INGOT)
+                .define('S', Items.STRING)
+                .define('T', Items.TRIPWIRE_HOOK)
+                .define('H', ModBlocks.HAWTHORN_PLANKS.get())
+                .unlockedBy("has_hawthorn_planks", has(ModBlocks.HAWTHORN_PLANKS.get()))
+                .save(recipeOutput);
     }
 }

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "minecraft:glowstone_dust"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "T": {
+      "item": "occultum:golden_thread"
+    },
+    "W": {
+      "item": "occultum:wispy_cotton"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "GSG",
+    " W "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:dream_weaver_intensity"
+  }
+}

@@ -80,6 +80,19 @@ public class OccultumBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.WITCHS_LADDER.get());
         dropSelf(ModBlocks.CRYSTAL_BALL.get());
 
+        // Sprint 4 Blocks
+        dropSelf(ModBlocks.BLOOD_CRUCIBLE.get());
+        dropSelf(ModBlocks.COFFIN.get());
+        dropSelf(ModBlocks.GARLIC_GARLAND.get());
+        dropSelf(ModBlocks.WOLF_ALTAR.get());
+        dropSelf(ModBlocks.DREAM_WEAVER_FLEET_FOOT.get());
+        dropSelf(ModBlocks.DREAM_WEAVER_IRON_ARM.get());
+        dropSelf(ModBlocks.DREAM_WEAVER_FASTING.get());
+        dropSelf(ModBlocks.DREAM_WEAVER_NIGHTMARES.get());
+        dropSelf(ModBlocks.DREAM_WEAVER_INTENSITY.get());
+        dropSelf(ModBlocks.REFILLING_CHEST.get());
+        dropSelf(ModBlocks.MYSTIC_MIRROR_BLOCK.get());
+
         // Drops controlados por lógica específica no bloco
         add(ModBlocks.SPANISH_MOSS.get(), noDrop());
         add(ModBlocks.EMBER_MOSS.get(), noDrop());
@@ -98,7 +111,12 @@ public class OccultumBlockLootSubProvider extends BlockLootSubProvider {
                 .map(h -> (Block) h.get())
                 .filter(b -> b != ModBlocks.FLOWING_SPIRIT_BLOCK.get()
                         && b != ModBlocks.HOLLOW_TEARS_BLOCK.get()
-                        && b != ModBlocks.DISEASE_LIQUID_BLOCK.get())
+                        && b != ModBlocks.DISEASE_LIQUID_BLOCK.get()
+                        && b != ModBlocks.SPIRIT_PORTAL.get()
+                        && b != ModBlocks.TORMENT_STONE.get()
+                        && b != ModBlocks.TORMENT_PORTAL.get()
+                        && b != ModBlocks.MIRROR_WALL.get()
+                        && b != ModBlocks.UNBREAKABLE_MIRROR.get())
                 ::iterator;
     }
 }

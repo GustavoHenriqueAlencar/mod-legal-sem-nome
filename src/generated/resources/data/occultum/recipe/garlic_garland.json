@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "G": {
+      "item": "occultum:garlic"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "T": {
+      "item": "occultum:tormented_twine"
+    }
+  },
+  "pattern": [
+    "GGG",
+    "STS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:garlic_garland"
+  }
+}

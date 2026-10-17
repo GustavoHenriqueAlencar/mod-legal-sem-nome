@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "minecraft:bone_block"
+    },
+    "S": {
+      "item": "minecraft:stone_bricks"
+    }
+  },
+  "pattern": [
+    " S ",
+    "SBS",
+    "SSS"
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:wolf_altar"
+  }
+}

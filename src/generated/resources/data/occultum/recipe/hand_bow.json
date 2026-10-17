@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "H": {
+      "item": "occultum:hawthorn_planks"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:string"
+    },
+    "T": {
+      "item": "minecraft:tripwire_hook"
+    }
+  },
+  "pattern": [
+    "ISI",
+    " T ",
+    " H "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:hand_bow"
+  }
+}

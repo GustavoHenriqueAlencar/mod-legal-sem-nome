@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "M": {
+      "item": "occultum:mellifluous_hunger"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "T": {
+      "item": "occultum:fanciful_thread"
+    },
+    "W": {
+      "item": "occultum:wispy_cotton"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "MSM",
+    " W "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:dream_weaver_fasting"
+  }
+}

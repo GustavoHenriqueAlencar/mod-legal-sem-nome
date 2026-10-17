@@ -69,6 +69,23 @@ public class TaglockKitItem extends Item {
     }
 
     @Nullable
+    public static UUID getBoundEntityUUID(ItemStack stack) {
+        String sig = stack.get(ModDataComponentTypes.DNA_SIGNATURE.get());
+        if (sig == null || sig.isEmpty()) return null;
+        try {
+            return UUID.fromString(sig);
+        } catch (IllegalArgumentException ignored) {
+            return null;
+        }
+    }
+
+    @Nullable
+    public static String getBoundEntityName(ItemStack stack) {
+        String name = stack.get(ModDataComponentTypes.DNA_TARGET_NAME.get());
+        return (name == null || name.isEmpty()) ? null : name;
+    }
+
+    @Nullable
     public static LivingEntity resolveTarget(@Nullable MinecraftServer server, ItemStack stack) {
         if (server == null) return null;
         String sig = stack.get(ModDataComponentTypes.DNA_SIGNATURE.get());
@@ -95,25 +112,12 @@ public class TaglockKitItem extends Item {
             return InteractionResult.SUCCESS;
         }
 
-        // Cálculo furtivo para alvos jogadores humanos (Seção 2.1.A)
+        // Cálculo furtivo para alvos jogadores humanos (Seção 2.1.A de 06_POPPETS_E_FETISHES.md)
         if (target instanceof Player targetPlayer) {
-            double approachAngle = computeRelativeApproachAngleDegrees(collector, targetPlayer);
-            boolean fromBehind = approachAngle > 120.0D && approachAngle < 240.0D;
-            boolean sneaking = collector.isShiftKeyDown();
-
-            double stealthChance;
-            if (fromBehind) {
-                stealthChance = sneaking ? 0.60D : 0.30D;
-            } else {
-                stealthChance = sneaking ? 0.10D : 0.01D;
-            }
-            if (collector.hasEffect(MobEffects.INVISIBILITY)) {
-                stealthChance += 0.50D;
-            }
-
-            boolean stealthSuccess = level.random.nextDouble() < Math.min(1.0D, stealthChance);
+            double stealthChance = calculateStealthChance(collector, targetPlayer);
+            boolean stealthSuccess = level.random.nextDouble() < stealthChance;
             if (!stealthSuccess) {
-                // Falha / Detecção: som estridente de tesoura e mensagem de alerta para a vítima
+                // Falha / Detecção: som estridente de corte metálico de tesouras e mensagem de alerta no chat
                 level.playSound(null, targetPlayer.blockPosition(), SoundEvents.SHEEP_SHEAR, SoundSource.PLAYERS, 1.0F, 1.4F);
                 targetPlayer.displayClientMessage(
                         Component.translatable("message.occultum.taglock.detected").withStyle(ChatFormatting.RED),
@@ -132,22 +136,48 @@ public class TaglockKitItem extends Item {
     }
 
     /**
-     * Calcula o ângulo em graus [0..360) entre o vetor de olhar horizontal do alvo e o vetor
-     * que aponta do alvo para o coletor. Quando o coletor está exatamente atrás das costas do alvo,
-     * o ângulo é 180° (dentro do arco > 120° e < 240°).
+     * Calcula a probabilidade exata [0.0..1.0] de sucesso furtivo conforme a Seção 2.1.A:
+     * - Costas (ângulo entre 120° e 240° em relação à visão do alvo): 60% agachado, 30% em pé.
+     * - Frontal ou lateral: 10% agachado, 1% em pé.
+     * - Bônus de Invisibilidade: +50% na chance final.
+     */
+    public static double calculateStealthChance(Player collector, LivingEntity target) {
+        double approachAngle = computeRelativeApproachAngleDegrees(collector, target);
+        boolean fromBehind = approachAngle >= 120.0D && approachAngle <= 240.0D;
+        boolean sneaking = collector.isCrouching() || collector.isShiftKeyDown();
+
+        double stealthChance;
+        if (fromBehind) {
+            stealthChance = sneaking ? 0.60D : 0.30D;
+        } else {
+            stealthChance = sneaking ? 0.10D : 0.01D;
+        }
+        if (collector.hasEffect(MobEffects.INVISIBILITY) || collector.isInvisible()) {
+            stealthChance += 0.50D;
+        }
+        return Math.min(1.0D, stealthChance);
+    }
+
+    /**
+     * Calcula o ângulo horizontal em graus [0..360) entre a direção da visão do alvo (YRot/YHeadRot)
+     * e o vetor que aponta do alvo para o coletor.
+     * - 0° = coletor diretamente na frente do rosto do alvo.
+     * - 180° = coletor exatamente atrás das costas do alvo (arco traseiro: 120° a 240°).
      */
     public static double computeRelativeApproachAngleDegrees(Player collector, LivingEntity target) {
-        Vec3 targetLook = Vec3.directionFromRotation(0.0F, target.getYHeadRot()).normalize();
-        Vec3 toCollector = new Vec3(collector.getX() - target.getX(), 0.0D, collector.getZ() - target.getZ());
-        if (toCollector.lengthSqr() < 1.0E-5D) {
+        double dx = collector.getX() - target.getX();
+        double dz = collector.getZ() - target.getZ();
+        if (dx * dx + dz * dz < 1.0E-6D) {
             return 0.0D;
         }
-        toCollector = toCollector.normalize();
-        double dot = Math.max(-1.0D, Math.min(1.0D, targetLook.dot(toCollector)));
-        double angleDeg = Math.toDegrees(Math.acos(dot)); // 0 (frente) a 180 (costas)
-        // Mapeia simetricamente no intervalo [0, 360) onde 180 é exatamente atrás
-        double crossY = targetLook.x * toCollector.z - targetLook.z * toCollector.x;
-        return crossY >= 0 ? angleDeg : (360.0D - angleDeg);
+        // Em Minecraft: yaw 0 = +Z (Sul), yaw 90 = -X (Oeste), yaw 180 = -Z (Norte), yaw 270 = +X (Leste)
+        double angleToCollectorDeg = Math.toDegrees(Math.atan2(-dx, dz));
+        double targetYawDeg = target.getYHeadRot();
+        double diff = (angleToCollectorDeg - targetYawDeg) % 360.0D;
+        if (diff < 0.0D) {
+            diff += 360.0D;
+        }
+        return diff;
     }
 
     @Override

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "occultum:disturbed_cotton"
+    },
+    "G": {
+      "item": "occultum:golden_thread"
+    },
+    "M": {
+      "item": "occultum:mellifluous_hunger"
+    },
+    "W": {
+      "item": "occultum:wispy_cotton"
+    }
+  },
+  "pattern": [
+    " G ",
+    "WMW",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:charm_of_disrupted_dreams"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "P": {
+      "item": "occultum:hawthorn_planks"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "  S",
+    " P ",
+    "S  "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:wooden_stake"
+  }
+}

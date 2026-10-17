@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "occultum:dream_weaver_iron_arm"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_wispy_cotton": {
+      "conditions": {
+        "items": [
+          {
+            "items": "occultum:wispy_cotton"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_wispy_cotton"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "occultum:dream_weaver_iron_arm"
+    ]
+  }
+}

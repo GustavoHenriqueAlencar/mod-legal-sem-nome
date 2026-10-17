@@ -124,6 +124,28 @@ public class ModBlockEntities {
                     ModBlocks.CRYSTAL_BALL.get()
             ).build(null));
 
+    // Sprint 4 Block Entities
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<com.occultum.common.vampire.BloodCrucibleBlockEntity>> BLOOD_CRUCIBLE =
+            BLOCK_ENTITIES.register("blood_crucible", () -> BlockEntityType.Builder.of(
+                    com.occultum.common.vampire.BloodCrucibleBlockEntity::new,
+                    ModBlocks.BLOOD_CRUCIBLE.get()
+            ).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<com.occultum.common.vampire.BloodCrucibleBlockEntity>> BLOOD_CRUCIBLE_BE = BLOOD_CRUCIBLE;
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<com.occultum.common.torment.RefillingChestBlockEntity>> REFILLING_CHEST =
+            BLOCK_ENTITIES.register("refilling_chest", () -> BlockEntityType.Builder.of(
+                    com.occultum.common.torment.RefillingChestBlockEntity::new,
+                    ModBlocks.REFILLING_CHEST.get()
+            ).build(null));
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<com.occultum.common.torment.RefillingChestBlockEntity>> REFILLING_CHEST_BE = REFILLING_CHEST;
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<com.occultum.common.mirror.MysticMirrorBlockEntity>> MYSTIC_MIRROR =
+            BLOCK_ENTITIES.register("mystic_mirror", () -> BlockEntityType.Builder.of(
+                    com.occultum.common.mirror.MysticMirrorBlockEntity::new,
+                    ModBlocks.MYSTIC_MIRROR_BLOCK.get(),
+                    ModBlocks.UNBREAKABLE_MIRROR.get()
+            ).build(null));
+
     public static void register(IEventBus eventBus) {
         BLOCK_ENTITIES.register(eventBus);
     }

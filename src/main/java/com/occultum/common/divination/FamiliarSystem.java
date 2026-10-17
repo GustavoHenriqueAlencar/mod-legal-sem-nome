@@ -38,6 +38,27 @@ import java.util.List;
  */
 public class FamiliarSystem {
 
+    public enum FamiliarType {
+        CAT("cat"),
+        TOAD("toad"),
+        OWL("owl");
+
+        private final String id;
+
+        FamiliarType(String id) {
+            this.id = id;
+        }
+
+        public String getId() {
+            return id;
+        }
+    }
+
+    public static boolean hasFamiliar(Player player, FamiliarType type) {
+        if (player == null || type == null) return false;
+        return type.getId().equals(player.getData(ModAttachmentTypes.FAMILIAR_TYPE.get()));
+    }
+
     public static boolean isValidFamiliarCandidate(LivingEntity entity) {
         return entity instanceof Cat
                 || entity instanceof Ocelot

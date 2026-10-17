@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_disturbed_cotton": {
+      "conditions": {
+        "items": [
+          {
+            "items": "occultum:disturbed_cotton"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "occultum:dream_weaver_nightmares"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_disturbed_cotton"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "occultum:dream_weaver_nightmares"
+    ]
+  }
+}

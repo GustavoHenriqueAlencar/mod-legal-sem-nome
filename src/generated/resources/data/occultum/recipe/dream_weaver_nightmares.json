@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "occultum:reek_of_misfortune"
+    },
+    "D": {
+      "item": "occultum:disturbed_cotton"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "T": {
+      "item": "occultum:tormented_twine"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "DSD",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:dream_weaver_nightmares"
+  }
+}

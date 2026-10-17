@@ -39,6 +39,8 @@ public class ClientModEvents {
     public static void registerGuiLayers(RegisterGuiLayersEvent event) {
         event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(OccultumMod.MOD_ID, "infusion_power_hud"),
                 new InfusionHudOverlay());
+        event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(OccultumMod.MOD_ID, "vampire_blood_hud"),
+                new com.occultum.client.gui.VampireBloodHudOverlay());
     }
 
     @SubscribeEvent
@@ -49,6 +51,20 @@ public class ClientModEvents {
         event.registerEntityRenderer(ModEntityTypes.TREEFYD.get(), TreefydRenderer::new);
         event.registerEntityRenderer(ModEntityTypes.TOAD_FAMILIAR.get(), ToadFamiliarRenderer::new);
         event.registerEntityRenderer(ModEntityTypes.OWL_FAMILIAR.get(), OwlFamiliarRenderer::new);
+
+        // Entidades Sprint 4
+        event.registerEntityRenderer(ModEntityTypes.ELLE.get(), Sprint4Renderers.ElleRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.LILITH.get(), Sprint4Renderers.LilithRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.ATTACK_BAT.get(), Sprint4Renderers.AttackBatRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.VAMPIRE_SERVANT.get(), Sprint4Renderers.VampireServantRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.WOLFMAN.get(), Sprint4Renderers.WolfmanRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.HORNED_HUNTSMAN.get(), Sprint4Renderers.HornedHuntsmanRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.SPIRIT.get(), Sprint4Renderers.SpiritRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.CORPSE.get(), Sprint4Renderers.CorpseRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.NIGHTMARE.get(), Sprint4Renderers.NightmareRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.LORD_OF_TORMENT.get(), Sprint4Renderers.LordOfTormentRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.REFLECTION_DEMON.get(), Sprint4Renderers.ReflectionDemonRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.FAIREST_FOLLOWER.get(), Sprint4Renderers.FairestFollowerRenderer::new);
 
         // Blocos Sprint 1
         event.registerBlockEntityRenderer(ModBlockEntities.ALTAR_BE.get(), AltarRenderer::new);
@@ -66,6 +82,10 @@ public class ClientModEvents {
         event.registerBlockEntityRenderer(ModBlockEntities.POPPET_SHELF_BE.get(), PoppetShelfRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.FETISH_BE.get(), FetishRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.CRYSTAL_BALL_BE.get(), CrystalBallRenderer::new);
+
+        // Blocos Sprint 4
+        event.registerBlockEntityRenderer(ModBlockEntities.BLOOD_CRUCIBLE.get(), Sprint4Renderers.BloodCrucibleRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.MYSTIC_MIRROR.get(), Sprint4Renderers.MysticMirrorRenderer::new);
     }
 
     @SubscribeEvent
@@ -89,6 +109,21 @@ public class ClientModEvents {
         event.registerLayerDefinition(CrystalBallModel.LAYER_LOCATION, CrystalBallModel::createBodyLayer);
         event.registerLayerDefinition(ToadFamiliarModel.LAYER_LOCATION, ToadFamiliarModel::createBodyLayer);
         event.registerLayerDefinition(OwlFamiliarModel.LAYER_LOCATION, OwlFamiliarModel::createBodyLayer);
+
+        // Sprint 4 Models
+        event.registerLayerDefinition(OccultumHumanoidModel.ELLE_LAYER, OccultumHumanoidModel::createBodyLayer);
+        event.registerLayerDefinition(OccultumHumanoidModel.LILITH_LAYER, OccultumHumanoidModel::createBodyLayer);
+        event.registerLayerDefinition(OccultumHumanoidModel.VAMPIRE_SERVANT_LAYER, OccultumHumanoidModel::createBodyLayer);
+        event.registerLayerDefinition(OccultumHumanoidModel.WOLFMAN_LAYER, OccultumHumanoidModel::createBodyLayer);
+        event.registerLayerDefinition(OccultumHumanoidModel.HORNED_HUNTSMAN_LAYER, OccultumHumanoidModel::createBodyLayer);
+        event.registerLayerDefinition(OccultumHumanoidModel.CORPSE_LAYER, OccultumHumanoidModel::createBodyLayer);
+        event.registerLayerDefinition(OccultumHumanoidModel.NIGHTMARE_LAYER, OccultumHumanoidModel::createBodyLayer);
+        event.registerLayerDefinition(OccultumHumanoidModel.LORD_OF_TORMENT_LAYER, OccultumHumanoidModel::createBodyLayer);
+        event.registerLayerDefinition(OccultumHumanoidModel.REFLECTION_DEMON_LAYER, OccultumHumanoidModel::createBodyLayer);
+        event.registerLayerDefinition(OccultumHumanoidModel.FAIREST_FOLLOWER_LAYER, OccultumHumanoidModel::createBodyLayer);
+        event.registerLayerDefinition(SpiritModel.LAYER_LOCATION, SpiritModel::createBodyLayer);
+        event.registerLayerDefinition(Sprint4BlockModels.BloodCrucibleModel.LAYER_LOCATION, Sprint4BlockModels.BloodCrucibleModel::createBodyLayer);
+        event.registerLayerDefinition(Sprint4BlockModels.MysticMirrorModel.LAYER_LOCATION, Sprint4BlockModels.MysticMirrorModel::createBodyLayer);
     }
 
     @SubscribeEvent

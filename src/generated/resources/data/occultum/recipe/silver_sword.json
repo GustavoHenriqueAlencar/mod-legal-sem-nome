@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "D": {
+      "item": "occultum:silver_dust"
+    },
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    " D ",
+    "IDI",
+    " S "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:silver_sword"
+  }
+}

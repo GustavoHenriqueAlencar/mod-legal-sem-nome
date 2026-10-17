@@ -1208,47 +1208,77 @@ public final class CircleRitualRegistry {
                 null, false,
                 CircleRitualRegistry::teleportToWaystone, null));
 
-        // #92: Maldição do Lobo (Transformar em Lobisomem - Nível Avançado)
+        // #92: Maldição do Lobo (Infecção de Licantropia por Ritual)
         list.add(new RitualDefinition(92, "curse_of_the_wolf_advanced",
                 ChalkColor.NONE, ChalkColor.NONE, ChalkColor.RED,
                 8000, 0, 0, 6, TimeWeatherCondition.FULL_MOON_NIGHT_ONLY,
                 List.of(ModItems.TAGLOCK_KIT::get, ModItems.DOG_TONGUE::get, ModItems.WOLFSBANE_FLOWER::get),
-                le -> le instanceof Wolf w && w.isTame(), true,
-                ctx -> {
-                    LivingEntity target = ctx.findTaglockTarget();
-                    if (target instanceof Player p) {
-                        int lvl = p.getData(ModAttachmentTypes.WEREWOLF_LEVEL.get());
-                        p.setData(ModAttachmentTypes.WEREWOLF_LEVEL.get(), Math.max(1, lvl + 1));
-                    }
-                    ctx.spawnResult(new ItemStack(ModItems.TAGLOCK_KIT.get()));
-                }, null));
-
-        // #93: Maldição do Lobo (Infecção Primária por Mordida Espiritual)
-        list.add(new RitualDefinition(93, "curse_of_the_wolf_infection",
-                ChalkColor.NONE, ChalkColor.RED, ChalkColor.NONE,
-                6000, 0, 0, 4, TimeWeatherCondition.NIGHT_ONLY,
-                List.of(ModItems.TAGLOCK_KIT::get, ModItems.DOG_TONGUE::get, ModItems.DEMONIC_BLOOD::get),
                 le -> le instanceof Wolf, true,
                 ctx -> {
                     LivingEntity target = ctx.findTaglockTarget();
                     if (target instanceof Player p) {
-                        if (p.getData(ModAttachmentTypes.WEREWOLF_LEVEL.get()) == 0) {
-                            p.setData(ModAttachmentTypes.WEREWOLF_LEVEL.get(), 1);
+                        int lvl = p.getData(ModAttachmentTypes.WEREWOLF_LEVEL.get());
+                        if (lvl == 0) {
+                            com.occultum.common.werewolf.LycanthropySystem.setWerewolfLevel(p, 1);
                         }
                     }
                     ctx.spawnResult(new ItemStack(ModItems.TAGLOCK_KIT.get()));
                 }, null));
 
-        // #94: Ritual de Purificação e Remoção do Vampirismo
-        list.add(new RitualDefinition(94, "cure_vampirism",
-                ChalkColor.NONE, ChalkColor.NONE, ChalkColor.WHITE,
-                10000, 0, 0, 6, TimeWeatherCondition.NOON_SUN_ONLY,
-                List.of(ModItems.TEAR_OF_THE_GODDESS::get, ModItems.GARLIC::get, () -> Items.ENCHANTED_GOLDEN_APPLE),
+        // #93: Ritual da Maldição do Lobo - Modo Purificação / Cura da Licantropia (Seção 4.2 de 08_VAMPIRISMO_E_LICANTROPIA.md)
+        list.add(new RitualDefinition(93, "cure_lycanthropy",
+                ChalkColor.NONE, ChalkColor.RED, ChalkColor.NONE,
+                8000, 0, 0, 6, TimeWeatherCondition.FULL_MOON_NIGHT_ONLY,
+                List.of(ModItems.TAGLOCK_KIT::get, () -> Items.GOLD_INGOT, ModItems.SILVER_SWORD::get, ModItems.WOLFSBANE_FLOWER::get),
                 null, false,
                 ctx -> {
-                    ctx.activator().setData(ModAttachmentTypes.VAMPIRE_LEVEL.get(), 0);
-                    ctx.activator().setData(ModAttachmentTypes.BLOOD_LEVEL.get(), 0);
-                    ctx.activator().setRemainingFireTicks(100);
+                    // Exige presença de Familiar Gato pertencente ao conjurador
+                    if (!FamiliarSystem.hasFamiliar(ctx.activator(), FamiliarSystem.FamiliarType.CAT)) {
+                        ctx.level().playSound(null, ctx.center(), SoundEvents.ENDER_DRAGON_GROWL, SoundSource.BLOCKS, 1.0F, 0.8F);
+                        ctx.spawnResult(new ItemStack(ModItems.TAGLOCK_KIT.get()));
+                        return;
+                    }
+                    LivingEntity target = ctx.findTaglockTarget();
+                    if (target == null && ctx.activator() != null) {
+                        target = ctx.activator();
+                    }
+                    if (target instanceof Player p) {
+                        int lvl = com.occultum.common.werewolf.LycanthropySystem.getWerewolfLevel(p);
+                        if (lvl >= 1) {
+                            double distSq = p.blockPosition().distSqr(ctx.center());
+                            // Nível 1: alcance global ilimitado; Nível 2..10: d^2 <= 64.0 (<= 8 blocos)
+                            boolean inRange = (lvl == 1) || (p.level() == ctx.level() && distSq <= 64.0D);
+                            if (inRange && ctx.level().random.nextFloat() < 0.75F) {
+                                // 75% de chance: purifica com sucesso e restaura nível para 0
+                                com.occultum.common.werewolf.LycanthropySystem.cureLycanthropy(p);
+                                ctx.level().playSound(null, ctx.center(), SoundEvents.ZOMBIE_VILLAGER_CURE, SoundSource.BLOCKS, 1.0F, 1.0F);
+                            } else {
+                                // 25% de chance (ou fora de alcance): a fera interior resiste, emitindo chamas e rugido de dragão
+                                ctx.level().sendParticles(ParticleTypes.FLAME, ctx.center().getX() + 0.5D, ctx.center().getY() + 0.8D, ctx.center().getZ() + 0.5D, 45, 0.6, 0.5, 0.6, 0.05);
+                                ctx.level().playSound(null, ctx.center(), SoundEvents.ENDER_DRAGON_GROWL, SoundSource.BLOCKS, 1.2F, 0.7F);
+                            }
+                        }
+                    }
+                    ctx.spawnResult(new ItemStack(ModItems.TAGLOCK_KIT.get()));
+                }, null));
+
+        // #94: Ritual de Purificação do Sangue - Cura do Vampirismo (Seção 4.1 de 08_VAMPIRISMO_E_LICANTROPIA.md)
+        // Ingredientes: Taglock Kit, Sopro da Deusa, Espada de Prata, Alho, Diamante e Poção do Amor;
+        // Círculo Branco de 16 glifos (pequeno), 10.000 de poder (20/tick por 500 ticks), Meio-Dia sob Sol Pleno, Coven 6.
+        list.add(new RitualDefinition(94, "cure_vampirism",
+                ChalkColor.WHITE, ChalkColor.NONE, ChalkColor.NONE,
+                10000, 400, 500, 6, TimeWeatherCondition.NOON_SUN_ONLY,
+                List.of(ModItems.TAGLOCK_KIT::get, ModItems.BREATH_OF_THE_GODDESS::get, ModItems.SILVER_SWORD::get,
+                        ModItems.GARLIC::get, () -> Items.DIAMOND, ModItems.BREW_OF_LOVE::get),
+                null, false,
+                ctx -> {
+                    LivingEntity target = ctx.findTaglockTarget();
+                    if (target instanceof Player p) {
+                        com.occultum.common.vampire.VampirismSystem.cureVampirism(p);
+                    } else if (ctx.activator() != null) {
+                        com.occultum.common.vampire.VampirismSystem.cureVampirism(ctx.activator());
+                    }
+                    ctx.spawnResult(new ItemStack(ModItems.TAGLOCK_KIT.get()));
                 }, null));
 
         // #95: Ritual de Criação do Espelho Místico (Mirror)

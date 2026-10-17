@@ -21,5 +21,17 @@ public class CommonModEvents {
         event.put(ModEntityTypes.TREEFYD.get(), TreefydEntity.createAttributes().build());
         event.put(ModEntityTypes.TOAD_FAMILIAR.get(), ToadFamiliarEntity.createAttributes().build());
         event.put(ModEntityTypes.OWL_FAMILIAR.get(), OwlFamiliarEntity.createAttributes().build());
+        event.put(ModEntityTypes.ELLE.get(), com.occultum.common.entity.ElleEntity.createAttributes().build());
+        event.put(ModEntityTypes.LILITH.get(), com.occultum.common.entity.LilithEntity.createAttributes().build());
+        event.put(ModEntityTypes.ATTACK_BAT.get(), com.occultum.common.entity.AttackBatEntity.createAttributes().build());
+        event.put(ModEntityTypes.VAMPIRE_SERVANT.get(), com.occultum.common.entity.VampireServantEntity.createAttributes().build());
+        event.put(ModEntityTypes.WOLFMAN.get(), com.occultum.common.entity.WolfmanEntity.createAttributes().build());
+        event.put(ModEntityTypes.HORNED_HUNTSMAN.get(), com.occultum.common.entity.HornedHuntsmanEntity.createAttributes().build());
+        event.put(ModEntityTypes.SPIRIT.get(), com.occultum.common.entity.SpiritEntity.createAttributes().build());
+        event.put(ModEntityTypes.CORPSE.get(), com.occultum.common.entity.CorpseEntity.createAttributes().build());
+        event.put(ModEntityTypes.NIGHTMARE.get(), com.occultum.common.entity.NightmareEntity.createAttributes().build());
+        event.put(ModEntityTypes.LORD_OF_TORMENT.get(), com.occultum.common.entity.LordOfTormentEntity.createAttributes().build());
+        event.put(ModEntityTypes.REFLECTION_DEMON.get(), com.occultum.common.entity.ReflectionDemonEntity.createAttributes().build());
+        event.put(ModEntityTypes.FAIREST_FOLLOWER.get(), com.occultum.common.entity.FairestFollowerEntity.createAttributes().build());
     }
 }

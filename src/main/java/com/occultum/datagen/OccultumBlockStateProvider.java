@@ -105,6 +105,26 @@ public class OccultumBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.TRENT_EFFIGY.get(), models().cubeAll("trent_effigy", modLoc("block/trent_effigy")));
         simpleBlock(ModBlocks.WITCHS_LADDER.get(), models().cubeAll("witchs_ladder", modLoc("block/witchs_ladder")));
         simpleBlock(ModBlocks.CRYSTAL_BALL.get(), models().cubeAll("crystal_ball", modLoc("block/crystal_ball")));
+
+        // Sprint 4 Blocks
+        simpleBlock(ModBlocks.BLOOD_CRUCIBLE.get(), models().cubeAll("blood_crucible", modLoc("block/blood_crucible")));
+        simpleBlock(ModBlocks.COFFIN.get(), models().cubeAll("coffin", modLoc("block/coffin")));
+        simpleBlock(ModBlocks.GARLIC_GARLAND.get(), models().cubeAll("garlic_garland", modLoc("block/garlic_garland")));
+        simpleBlock(ModBlocks.WOLF_ALTAR.get(), models().cubeAll("wolf_altar", modLoc("block/wolf_altar")));
+
+        simpleBlock(ModBlocks.DREAM_WEAVER_FLEET_FOOT.get(), models().cubeAll("dream_weaver_fleet_foot", modLoc("block/dream_weaver_fleet_foot")));
+        simpleBlock(ModBlocks.DREAM_WEAVER_IRON_ARM.get(), models().cubeAll("dream_weaver_iron_arm", modLoc("block/dream_weaver_iron_arm")));
+        simpleBlock(ModBlocks.DREAM_WEAVER_FASTING.get(), models().cubeAll("dream_weaver_fasting", modLoc("block/dream_weaver_fasting")));
+        simpleBlock(ModBlocks.DREAM_WEAVER_NIGHTMARES.get(), models().cubeAll("dream_weaver_nightmares", modLoc("block/dream_weaver_nightmares")));
+        simpleBlock(ModBlocks.DREAM_WEAVER_INTENSITY.get(), models().cubeAll("dream_weaver_intensity", modLoc("block/dream_weaver_intensity")));
+        simpleBlock(ModBlocks.SPIRIT_PORTAL.get(), models().cubeAll("spirit_portal", modLoc("block/spirit_portal")));
+
+        simpleBlock(ModBlocks.TORMENT_STONE.get(), models().cubeAll("torment_stone", modLoc("block/torment_stone")));
+        simpleBlock(ModBlocks.REFILLING_CHEST.get(), models().cubeAll("refilling_chest", modLoc("block/refilling_chest")));
+        simpleBlock(ModBlocks.TORMENT_PORTAL.get(), models().cubeAll("torment_portal", modLoc("block/torment_portal")));
+        simpleBlock(ModBlocks.MIRROR_WALL.get(), models().cubeAll("mirror_wall", modLoc("block/mirror_wall")));
+        simpleBlock(ModBlocks.MYSTIC_MIRROR_BLOCK.get(), models().cubeAll("mystic_mirror", modLoc("block/mystic_mirror")));
+        simpleBlock(ModBlocks.UNBREAKABLE_MIRROR.get(), models().cubeAll("unbreakable_mirror", modLoc("block/unbreakable_mirror")));
     }
 
     private void crossBlock(Block block) {

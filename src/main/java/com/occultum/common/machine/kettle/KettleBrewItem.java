@@ -134,7 +134,12 @@ public class KettleBrewItem extends Item {
                     entity.addEffect(new MobEffectInstance(MobEffects.WATER_BREATHING, 6000, 0));
                     entity.addEffect(new MobEffectInstance(ModMobEffects.SWIMMING, 6000, 0));
                 }
-                case SLEEPING -> entity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 0));
+                case SLEEPING -> {
+                    entity.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 200, 0));
+                    if (entity instanceof net.minecraft.server.level.ServerPlayer sp) {
+                        com.occultum.common.spirit.SpiritWorldManager.enterSpiritWorld(sp, false);
+                    }
+                }
                 default -> {}
             }
         }

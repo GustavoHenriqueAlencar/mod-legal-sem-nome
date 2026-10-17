@@ -459,6 +459,124 @@ public class ModBlocks {
                             .noLootTable()
                             .liquid()));
 
+    // =========================================================================
+    // SPRINT 4: VAMPIRISMO, LICANTROPIA, MUNDO ESPIRITUAL, TORMENTO E ESPELHO
+    // =========================================================================
+
+    public static final DeferredBlock<com.occultum.common.vampire.BloodCrucibleBlock> BLOOD_CRUCIBLE =
+            BLOCKS.register("blood_crucible", () -> new com.occultum.common.vampire.BloodCrucibleBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.STONE)
+                            .strength(3.5F, 6.0F)
+                            .lightLevel(s -> 7)
+                            .noOcclusion()));
+
+    public static final DeferredBlock<com.occultum.common.vampire.CoffinBlock> COFFIN =
+            BLOCKS.register("coffin", () -> new com.occultum.common.vampire.CoffinBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_RED)
+                            .strength(2.5F)
+                            .noOcclusion()));
+
+    public static final DeferredBlock<com.occultum.common.vampire.GarlicGarlandBlock> GARLIC_GARLAND =
+            BLOCKS.register("garlic_garland", () -> new com.occultum.common.vampire.GarlicGarlandBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.PLANT)
+                            .strength(0.3F)
+                            .noCollission()
+                            .noOcclusion()));
+
+    public static final DeferredBlock<com.occultum.common.werewolf.WolfAltarBlock> WOLF_ALTAR =
+            BLOCKS.register("wolf_altar", () -> new com.occultum.common.werewolf.WolfAltarBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.STONE)
+                            .strength(4.0F, 8.0F)
+                            .noOcclusion()));
+
+    // Os 5 Apanhadores de Sonhos (Dream Weavers - Seção 5 de 09_MUNDO_ESPIRITUAL_E_SONHOS.md)
+    public static final DeferredBlock<com.occultum.common.spirit.DreamWeaverBlock> DREAM_WEAVER_FLEET_FOOT =
+            BLOCKS.register("dream_weaver_fleet_foot", () -> new com.occultum.common.spirit.DreamWeaverBlock(
+                    BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.8F).noCollission().noOcclusion(),
+                    com.occultum.common.spirit.DreamWeaverBlock.WeaverType.FLEET_FOOT));
+
+    public static final DeferredBlock<com.occultum.common.spirit.DreamWeaverBlock> DREAM_WEAVER_IRON_ARM =
+            BLOCKS.register("dream_weaver_iron_arm", () -> new com.occultum.common.spirit.DreamWeaverBlock(
+                    BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.8F).noCollission().noOcclusion(),
+                    com.occultum.common.spirit.DreamWeaverBlock.WeaverType.IRON_ARM));
+
+    public static final DeferredBlock<com.occultum.common.spirit.DreamWeaverBlock> DREAM_WEAVER_FASTING =
+            BLOCKS.register("dream_weaver_fasting", () -> new com.occultum.common.spirit.DreamWeaverBlock(
+                    BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.8F).noCollission().noOcclusion(),
+                    com.occultum.common.spirit.DreamWeaverBlock.WeaverType.FASTING));
+
+    public static final DeferredBlock<com.occultum.common.spirit.DreamWeaverBlock> DREAM_WEAVER_NIGHTMARES =
+            BLOCKS.register("dream_weaver_nightmares", () -> new com.occultum.common.spirit.DreamWeaverBlock(
+                    BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.8F).noCollission().noOcclusion(),
+                    com.occultum.common.spirit.DreamWeaverBlock.WeaverType.NIGHTMARES));
+
+    public static final DeferredBlock<com.occultum.common.spirit.DreamWeaverBlock> DREAM_WEAVER_INTENSITY =
+            BLOCKS.register("dream_weaver_intensity", () -> new com.occultum.common.spirit.DreamWeaverBlock(
+                    BlockBehaviour.Properties.of().mapColor(MapColor.WOOD).strength(0.8F).noCollission().noOcclusion(),
+                    com.occultum.common.spirit.DreamWeaverBlock.WeaverType.INTENSITY));
+
+    public static final DeferredBlock<com.occultum.common.spirit.SpiritPortalBlock> SPIRIT_PORTAL =
+            BLOCKS.register("spirit_portal", () -> new com.occultum.common.spirit.SpiritPortalBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_LIGHT_BLUE)
+                            .noCollission()
+                            .strength(-1.0F, 3600000.0F)
+                            .lightLevel(s -> 11)
+                            .noLootTable()));
+
+    // Dimensão do Tormento (Seção 1 de 14_DIMENSOES_DO_TORMENTO_E_ESPELHO.md)
+    public static final DeferredBlock<Block> TORMENT_STONE =
+            BLOCKS.register("torment_stone", () -> new Block(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.STONE)
+                            .strength(-1.0F, 3600000.0F)
+                            .noLootTable()));
+
+    public static final DeferredBlock<com.occultum.common.torment.RefillingChestBlock> REFILLING_CHEST =
+            BLOCKS.register("refilling_chest", () -> new com.occultum.common.torment.RefillingChestBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.WOOD)
+                            .strength(2.5F, 3600000.0F)));
+
+    public static final DeferredBlock<com.occultum.common.torment.TormentPortalBlock> TORMENT_PORTAL =
+            BLOCKS.register("torment_portal", () -> new com.occultum.common.torment.TormentPortalBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_RED)
+                            .noCollission()
+                            .strength(-1.0F, 3600000.0F)
+                            .lightLevel(s -> 12)
+                            .noLootTable()));
+
+    // Dimensão do Espelho (Seção 3 de 14_DIMENSOES_DO_TORMENTO_E_ESPELHO.md)
+    public static final DeferredBlock<Block> MIRROR_WALL =
+            BLOCKS.register("mirror_wall", () -> new Block(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.DIAMOND)
+                            .strength(-1.0F, 3600000.0F)
+                            .lightLevel(s -> 6)
+                            .noLootTable()));
+
+    public static final DeferredBlock<com.occultum.common.mirror.MysticMirrorBlock> MYSTIC_MIRROR_BLOCK =
+            BLOCKS.register("mystic_mirror", () -> new com.occultum.common.mirror.MysticMirrorBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.DIAMOND)
+                            .strength(2.5F, 6.0F)
+                            .noOcclusion(),
+                    false));
+
+    public static final DeferredBlock<com.occultum.common.mirror.MysticMirrorBlock> UNBREAKABLE_MIRROR =
+            BLOCKS.register("unbreakable_mirror", () -> new com.occultum.common.mirror.MysticMirrorBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.DIAMOND)
+                            .strength(-1.0F, 3600000.0F)
+                            .noOcclusion()
+                            .noLootTable(),
+                    true));
+
     public static void register(IEventBus eventBus) {
         BLOCKS.register(eventBus);
     }

@@ -58,6 +58,10 @@ public class AltarPowerNetwork {
         return consumePower(level, consumerPos, (double) amount);
     }
 
+    public static boolean tryConsumeNearestAltarPower(Level level, BlockPos consumerPos, int radiusIgnored, int amount) {
+        return consumePower(level, consumerPos, (double) amount);
+    }
+
     public static boolean consumePower(Level level, BlockPos consumerPos, double amount) {
         if (level.isClientSide) return false;
         if (amount <= 0.0D) return true;

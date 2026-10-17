@@ -474,8 +474,12 @@ public class MysticBranchItem extends Item {
                 level.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, sky.x, sky.y, sky.z, 120, 4.0, 4.0, 4.0, 0.02);
                 level.playSound(null, caster.blockPosition(), SoundEvents.LIGHTNING_BOLT_THUNDER, SoundSource.PLAYERS, 2.0F, 0.6F);
             }
-            case 26 -> { // #26 Tormentum (Implosio Umbrae)
+            case 26 -> { // #26 Tormentum (Implosio Umbrae): envia jogador adversário atingido para um nível aleatório (0 a 5) do Tormento
                 BlockPos center = targetEntity != null ? targetEntity.blockPosition() : targetPos;
+                if (targetEntity instanceof net.minecraft.server.level.ServerPlayer victimPlayer) {
+                    int randomFloor = level.random.nextInt(6);
+                    com.occultum.common.torment.TormentDimensionManager.sendPlayerToTorment(victimPlayer, randomFloor);
+                }
                 for (LivingEntity e : level.getEntitiesOfClass(LivingEntity.class, new AABB(center).inflate(4.0D))) {
                     if (e != caster) {
                         e.hurt(level.damageSources().magic(), 8.0F);

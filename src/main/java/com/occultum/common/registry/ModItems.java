@@ -161,8 +161,8 @@ public class ModItems {
     public static final DeferredItem<Item> SNOWBELL =
             ITEMS.registerSimpleItem("snowbell", new Item.Properties());
 
-    public static final DeferredItem<Item> ICY_NEEDLE =
-            ITEMS.registerSimpleItem("icy_needle", new Item.Properties());
+    public static final DeferredItem<com.occultum.common.spirit.IcyNeedleItem> ICY_NEEDLE =
+            ITEMS.register("icy_needle", () -> new com.occultum.common.spirit.IcyNeedleItem(new Item.Properties()));
 
     public static final DeferredItem<Item> WORMWOOD_LEAF =
             ITEMS.registerSimpleItem("wormwood_leaf", new Item.Properties());
@@ -552,8 +552,8 @@ public class ModItems {
             ITEMS.registerSimpleItem("brew_of_soaring", new Item.Properties().stacksTo(16));
     public static final DeferredItem<Item> BREW_OF_THE_GRAVE =
             ITEMS.registerSimpleItem("brew_of_the_grave", new Item.Properties().stacksTo(16));
-    public static final DeferredItem<Item> MYSTIC_MIRROR =
-            ITEMS.registerSimpleItem("mystic_mirror", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<BlockItem> MYSTIC_MIRROR =
+            ITEMS.registerSimpleBlockItem("mystic_mirror", ModBlocks.MYSTIC_MIRROR_BLOCK);
     public static final DeferredItem<Item> POLYNESIA_CHARM =
             ITEMS.registerSimpleItem("polynesia_charm", new Item.Properties().stacksTo(1));
 
@@ -562,6 +562,124 @@ public class ModItems {
             ITEMS.register("toad_familiar_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.TOAD_FAMILIAR, 0x3D6E2E, 0x8CA842, new Item.Properties()));
     public static final DeferredItem<DeferredSpawnEggItem> OWL_FAMILIAR_SPAWN_EGG =
             ITEMS.register("owl_familiar_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.OWL_FAMILIAR, 0x6B4C35, 0xD9B382, new Item.Properties()));
+
+    // =========================================================================
+    // SPRINT 4: VAMPIRISMO, LICANTROPIA, MUNDO ESPIRITUAL, TORMENTO E ESPELHO
+    // =========================================================================
+
+    // Vampirismo
+    public static final DeferredItem<com.occultum.common.vampire.GlassGobletItem> GLASS_GOBLET =
+            ITEMS.register("glass_goblet", () -> new com.occultum.common.vampire.GlassGobletItem(com.occultum.common.vampire.GlassGobletItem.GobletFluid.EMPTY, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<com.occultum.common.vampire.GlassGobletItem> GLASS_GOBLET_CHICKEN_BLOOD =
+            ITEMS.register("glass_goblet_chicken_blood", () -> new com.occultum.common.vampire.GlassGobletItem(com.occultum.common.vampire.GlassGobletItem.GobletFluid.CHICKEN_BLOOD, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<com.occultum.common.vampire.GlassGobletItem> GLASS_GOBLET_LILITH_BLOOD =
+            ITEMS.register("glass_goblet_lilith_blood", () -> new com.occultum.common.vampire.GlassGobletItem(com.occultum.common.vampire.GlassGobletItem.GobletFluid.LILITH_BLOOD, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<com.occultum.common.vampire.GlassGobletItem> GLASS_GOBLET_VAMPIRE_BLOOD =
+            ITEMS.register("glass_goblet_vampire_blood", () -> new com.occultum.common.vampire.GlassGobletItem(com.occultum.common.vampire.GlassGobletItem.GobletFluid.VAMPIRE_BLOOD, new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<com.occultum.common.vampire.VampireBookItem> VAMPIRE_BOOK =
+            ITEMS.register("vampire_book", () -> new com.occultum.common.vampire.VampireBookItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> VAMPIRE_BOOK_PAGE =
+            ITEMS.registerSimpleItem("vampire_book_page", new Item.Properties());
+    public static final DeferredItem<Item> WOODEN_STAKE =
+            ITEMS.registerSimpleItem("wooden_stake", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> BLOOD_STAINED_WOOL =
+            ITEMS.registerSimpleItem("blood_stained_wool", new Item.Properties());
+    public static final DeferredItem<Item> SUN_COLLECTOR =
+            ITEMS.registerSimpleItem("sun_collector", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<com.occultum.common.vampire.SunlightGrenadeItem> SUNLIGHT_GRENADE =
+            ITEMS.register("sunlight_grenade", () -> new com.occultum.common.vampire.SunlightGrenadeItem(new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<Item> CANE_SWORD =
+            ITEMS.register("cane_sword", () -> new SwordItem(Tiers.IRON, new Item.Properties().attributes(
+                    SwordItem.createAttributes(Tiers.IRON, 4, -2.2F)
+            )));
+    public static final DeferredItem<BlockItem> BLOOD_CRUCIBLE =
+            ITEMS.registerSimpleBlockItem("blood_crucible", ModBlocks.BLOOD_CRUCIBLE);
+    public static final DeferredItem<BlockItem> COFFIN =
+            ITEMS.registerSimpleBlockItem("coffin", ModBlocks.COFFIN);
+    public static final DeferredItem<BlockItem> GARLIC_GARLAND =
+            ITEMS.registerSimpleBlockItem("garlic_garland", ModBlocks.GARLIC_GARLAND);
+
+    // Licantropia & Prata
+    public static final DeferredItem<com.occultum.common.werewolf.MoonCharmItem> MOON_CHARM =
+            ITEMS.register("moon_charm", () -> new com.occultum.common.werewolf.MoonCharmItem(new Item.Properties().stacksTo(1).durability(64)));
+    public static final DeferredItem<BlockItem> WOLF_ALTAR =
+            ITEMS.registerSimpleBlockItem("wolf_altar", ModBlocks.WOLF_ALTAR);
+    public static final DeferredItem<Item> WOLF_TOKEN =
+            ITEMS.registerSimpleItem("wolf_token", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<com.occultum.common.werewolf.HornOfTheHuntItem> HORN_OF_THE_HUNT =
+            ITEMS.register("horn_of_the_hunt", () -> new com.occultum.common.werewolf.HornOfTheHuntItem(new Item.Properties().stacksTo(1).durability(16)));
+    public static final DeferredItem<SwordItem> SILVER_SWORD =
+            ITEMS.register("silver_sword", () -> new SwordItem(Tiers.IRON, new Item.Properties().attributes(
+                    SwordItem.createAttributes(Tiers.IRON, 3, -2.4F)
+            )));
+    public static final DeferredItem<SwordItem> HUNTSMAN_SPEAR =
+            ITEMS.register("huntsman_spear", () -> new SwordItem(Tiers.DIAMOND, new Item.Properties().attributes(
+                    SwordItem.createAttributes(Tiers.DIAMOND, 5, -2.4F)
+            )));
+    public static final DeferredItem<SwordItem> HUNTSMANS_SPEAR = HUNTSMAN_SPEAR;
+    public static final DeferredItem<Item> WOLFSBANE_BREW =
+            ITEMS.registerSimpleItem("wolfsbane_brew", new Item.Properties().stacksTo(16));
+
+    // Mundo Espiritual & Sonhos
+    public static final DeferredItem<com.occultum.common.spirit.SleepingAppleItem> SLEEPING_APPLE =
+            ITEMS.register("sleeping_apple", () -> new com.occultum.common.spirit.SleepingAppleItem(
+                    new Item.Properties().food(new FoodProperties.Builder().nutrition(4).saturationModifier(0.3F).alwaysEdible().build())
+            ));
+    public static final DeferredItem<Item> CHARM_OF_DISRUPTED_DREAMS =
+            ITEMS.registerSimpleItem("charm_of_disrupted_dreams", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<BlockItem> DREAM_WEAVER_FLEET_FOOT =
+            ITEMS.registerSimpleBlockItem("dream_weaver_fleet_foot", ModBlocks.DREAM_WEAVER_FLEET_FOOT);
+    public static final DeferredItem<BlockItem> DREAM_WEAVER_IRON_ARM =
+            ITEMS.registerSimpleBlockItem("dream_weaver_iron_arm", ModBlocks.DREAM_WEAVER_IRON_ARM);
+    public static final DeferredItem<BlockItem> DREAM_WEAVER_FASTING =
+            ITEMS.registerSimpleBlockItem("dream_weaver_fasting", ModBlocks.DREAM_WEAVER_FASTING);
+    public static final DeferredItem<BlockItem> DREAM_WEAVER_NIGHTMARES =
+            ITEMS.registerSimpleBlockItem("dream_weaver_nightmares", ModBlocks.DREAM_WEAVER_NIGHTMARES);
+    public static final DeferredItem<BlockItem> DREAM_WEAVER_INTENSITY =
+            ITEMS.registerSimpleBlockItem("dream_weaver_intensity", ModBlocks.DREAM_WEAVER_INTENSITY);
+
+    // Dimensão do Tormento & Dimensão do Espelho
+    public static final DeferredItem<com.occultum.common.torment.TormentScrollItem> TORMENT_SCROLL =
+            ITEMS.register("torment_scroll", () -> new com.occultum.common.torment.TormentScrollItem(new Item.Properties().stacksTo(1)));
+    public static final DeferredItem<Item> SOUL_OF_TORMENT_BREW =
+            ITEMS.registerSimpleItem("soul_of_torment_brew", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> BREW_OF_SOUL_OF_TORMENT = SOUL_OF_TORMENT_BREW;
+    public static final DeferredItem<BlockItem> TORMENT_STONE =
+            ITEMS.registerSimpleBlockItem("torment_stone", ModBlocks.TORMENT_STONE);
+    public static final DeferredItem<BlockItem> REFILLING_CHEST =
+            ITEMS.registerSimpleBlockItem("refilling_chest", ModBlocks.REFILLING_CHEST);
+    public static final DeferredItem<BlockItem> MIRROR_WALL =
+            ITEMS.registerSimpleBlockItem("mirror_wall", ModBlocks.MIRROR_WALL);
+    public static final DeferredItem<Item> QUARTZ_SPHERE =
+            ITEMS.registerSimpleItem("quartz_sphere", new Item.Properties());
+    public static final DeferredItem<com.occultum.common.mirror.DuplicationGrenadeItem> DUPLICATION_GRENADE =
+            ITEMS.register("duplication_grenade", () -> new com.occultum.common.mirror.DuplicationGrenadeItem(new Item.Properties().stacksTo(16)));
+    public static final DeferredItem<com.occultum.common.mirror.HandBowItem> HAND_BOW =
+            ITEMS.register("hand_bow", () -> new com.occultum.common.mirror.HandBowItem(new Item.Properties().stacksTo(1).durability(384)));
+    public static final DeferredItem<Item> SILVER_BOLT =
+            ITEMS.registerSimpleItem("silver_bolt", new Item.Properties());
+    public static final DeferredItem<Item> SOLAR_BOLT =
+            ITEMS.registerSimpleItem("solar_bolt", new Item.Properties());
+    public static final DeferredItem<Item> HOLY_BOLT =
+            ITEMS.registerSimpleItem("holy_bolt", new Item.Properties());
+
+    // Ovos de Invocação da Sprint 4
+    public static final DeferredItem<DeferredSpawnEggItem> ELLE_SPAWN_EGG =
+            ITEMS.register("elle_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.ELLE, 0x4A1212, 0xD4AF37, new Item.Properties()));
+    public static final DeferredItem<DeferredSpawnEggItem> LILITH_SPAWN_EGG =
+            ITEMS.register("lilith_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.LILITH, 0x220509, 0xFF1E38, new Item.Properties()));
+    public static final DeferredItem<DeferredSpawnEggItem> WOLFMAN_SPAWN_EGG =
+            ITEMS.register("wolfman_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.WOLFMAN, 0x3D312A, 0x8B6F4E, new Item.Properties()));
+    public static final DeferredItem<DeferredSpawnEggItem> HORNED_HUNTSMAN_SPAWN_EGG =
+            ITEMS.register("horned_huntsman_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.HORNED_HUNTSMAN, 0x1E3318, 0x997A3E, new Item.Properties()));
+    public static final DeferredItem<DeferredSpawnEggItem> SPIRIT_SPAWN_EGG =
+            ITEMS.register("spirit_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.SPIRIT, 0xA8E6FF, 0xFFFFFF, new Item.Properties()));
+    public static final DeferredItem<DeferredSpawnEggItem> NIGHTMARE_SPAWN_EGG =
+            ITEMS.register("nightmare_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.NIGHTMARE, 0x0F0F1A, 0x7A1C99, new Item.Properties()));
+    public static final DeferredItem<DeferredSpawnEggItem> LORD_OF_TORMENT_SPAWN_EGG =
+            ITEMS.register("lord_of_torment_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.LORD_OF_TORMENT, 0x5A0A0A, 0xFF6600, new Item.Properties()));
+    public static final DeferredItem<DeferredSpawnEggItem> REFLECTION_DEMON_SPAWN_EGG =
+            ITEMS.register("reflection_demon_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.REFLECTION_DEMON, 0x4E6880, 0xA0D8EF, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

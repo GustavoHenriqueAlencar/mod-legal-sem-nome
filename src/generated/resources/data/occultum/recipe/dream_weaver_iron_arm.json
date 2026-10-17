@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "T": {
+      "item": "occultum:fanciful_thread"
+    },
+    "W": {
+      "item": "occultum:wispy_cotton"
+    }
+  },
+  "pattern": [
+    "TTT",
+    "ISI",
+    " W "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:dream_weaver_iron_arm"
+  }
+}

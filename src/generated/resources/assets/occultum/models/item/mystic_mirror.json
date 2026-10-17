@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "occultum:item/mystic_mirror"
-  }
+  "parent": "occultum:block/mystic_mirror"
 }
