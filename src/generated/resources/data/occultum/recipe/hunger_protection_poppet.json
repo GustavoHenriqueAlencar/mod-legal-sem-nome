@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "occultum:diamond_vapor"
+    },
+    "M": {
+      "item": "minecraft:glistering_melon_slice"
+    },
+    "P": {
+      "item": "occultum:unbound_poppet"
+    },
+    "R": {
+      "item": "occultum:rowan_berries"
+    }
+  },
+  "pattern": [
+    " R ",
+    "MPM",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:hunger_protection_poppet"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:iron_leggings"
+    },
+    "D": {
+      "item": "occultum:diamond_vapor"
+    },
+    "P": {
+      "item": "occultum:unbound_poppet"
+    },
+    "T": {
+      "item": "occultum:golden_thread"
+    }
+  },
+  "pattern": [
+    " T ",
+    "APA",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:armor_protection_poppet"
+  }
+}

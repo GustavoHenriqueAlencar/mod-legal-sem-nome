@@ -44,11 +44,11 @@ public class BloodRoseBlock extends BushBlock implements EntityBlock {
     @Override
     public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (!level.isClientSide && entity instanceof LivingEntity living) {
-            // Seção 4.4: Dano contínuo de espinhos e armazena o sangue da vítima
+            // Seção 4.4 / 06_POPPETS_E_FETISHES Seção 2.1.D: Dano de espinhos e armazena DNA/sangue da vítima
             if (living.hurt(level.damageSources().cactus(), 1.0F)) {
                 BlockEntity be = level.getBlockEntity(pos);
                 if (be instanceof BloodRoseBlockEntity rose) {
-                    rose.addBlood(25);
+                    rose.recordBloodSample(living, 25);
                 }
             }
         }

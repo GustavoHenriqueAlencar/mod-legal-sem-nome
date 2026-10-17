@@ -52,6 +52,34 @@ public class ModAttachmentTypes {
                     .serialize(Codec.INT)
                     .build());
 
+    /** Tipo de infusão ativa: "", "light", "overworld", "otherwhere", "nether" ou "grave". */
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<String>> INFUSION_TYPE =
+            ATTACHMENT_TYPES.register("infusion_type", () -> AttachmentType.builder(() -> "")
+                    .serialize(Codec.STRING)
+                    .copyOnDeath()
+                    .build());
+
+    /** Teto da barra de poder espiritual de infusão (200 a 400). */
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<Integer>> INFUSION_MAX_POWER =
+            ATTACHMENT_TYPES.register("infusion_max_power", () -> AttachmentType.builder(() -> 200)
+                    .serialize(Codec.INT)
+                    .copyOnDeath()
+                    .build());
+
+    /** ID da profecia ativa da Bola de Cristal (Seção 2.3 de 13_BRASEIRO_NECROMANCIA_E_ADIVINHACAO.md). */
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<String>> ACTIVE_PROPHECY =
+            ATTACHMENT_TYPES.register("active_prophecy", () -> AttachmentType.builder(() -> "")
+                    .serialize(Codec.STRING)
+                    .copyOnDeath()
+                    .build());
+
+    /** Timer regressivo de concretização forçada da profecia (9.600 a 36.000 ticks). */
+    public static final DeferredHolder<AttachmentType<?>, AttachmentType<Integer>> PROPHECY_TIMER =
+            ATTACHMENT_TYPES.register("prophecy_timer", () -> AttachmentType.builder(() -> 0)
+                    .serialize(Codec.INT)
+                    .copyOnDeath()
+                    .build());
+
     public static void register(IEventBus eventBus) {
         ATTACHMENT_TYPES.register(eventBus);
     }

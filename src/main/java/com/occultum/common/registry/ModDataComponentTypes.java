@@ -40,6 +40,32 @@ public class ModDataComponentTypes {
                     .networkSynchronized(CauldronPotionData.STREAM_CODEC)
                     .build());
 
+    // Sprint 3 Data Components
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> DNA_TARGET_NAME =
+            DATA_COMPONENT_TYPES.register("dna_target_name", () -> DataComponentType.<String>builder()
+                    .persistent(Codec.STRING)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> SECONDARY_DNA_SIGNATURE =
+            DATA_COMPONENT_TYPES.register("secondary_dna_signature", () -> DataComponentType.<String>builder()
+                    .persistent(Codec.STRING)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> SECONDARY_DNA_TARGET_NAME =
+            DATA_COMPONENT_TYPES.register("secondary_dna_target_name", () -> DataComponentType.<String>builder()
+                    .persistent(Codec.STRING)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<Integer>> CIRCLE_TALISMAN_MASK =
+            DATA_COMPONENT_TYPES.register("circle_talisman_mask", () -> DataComponentType.<Integer>builder()
+                    .persistent(Codec.INT)
+                    .build());
+
+    public static final DeferredHolder<DataComponentType<?>, DataComponentType<String>> FETISH_SPIRIT_EFFECT =
+            DATA_COMPONENT_TYPES.register("fetish_spirit_effect", () -> DataComponentType.<String>builder()
+                    .persistent(Codec.STRING)
+                    .build());
+
     public static void register(IEventBus eventBus) {
         DATA_COMPONENT_TYPES.register(eventBus);
     }

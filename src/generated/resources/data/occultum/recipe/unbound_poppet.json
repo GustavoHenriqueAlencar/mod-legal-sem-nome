@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "M": {
+      "item": "occultum:spanish_moss"
+    },
+    "N": {
+      "item": "minecraft:gold_nugget"
+    },
+    "S": {
+      "item": "minecraft:wheat_seeds"
+    },
+    "T": {
+      "item": "occultum:tormented_twine"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    "WMN",
+    "TSW",
+    " W "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:unbound_poppet"
+  }
+}

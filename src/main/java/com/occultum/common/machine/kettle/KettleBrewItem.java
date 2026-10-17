@@ -25,7 +25,9 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
 
 import org.jetbrains.annotations.Nullable;
 
@@ -97,13 +99,30 @@ public class KettleBrewItem extends Item {
             return InteractionResultHolder.consume(stack);
         }
         if (!level.isClientSide) {
-            applyWorldBrewEffect(level, player.blockPosition(), player);
-            level.playSound(null, player.blockPosition(), SoundEvents.SPLASH_POTION_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
-            if (!player.isCreative()) {
-                stack.shrink(1);
+            BlockHitResult hit = level.clip(new ClipContext(player.getEyePosition(),
+                    player.getEyePosition().add(player.getLookAngle().scale(24.0D)),
+                    ClipContext.Block.COLLIDER, ClipContext.Fluid.ANY, player));
+            BlockPos target = hit.getType() != net.minecraft.world.phys.HitResult.Type.MISS
+                    ? hit.getBlockPos()
+                    : player.blockPosition();
+            boolean hollowBrew = isHollowTearsBrew();
+            boolean applied = applyWorldBrewEffect(level, target, player);
+            if (applied) {
+                level.playSound(null, target, SoundEvents.SPLASH_POTION_BREAK, SoundSource.PLAYERS, 1.0F, 1.0F);
+                if (!player.isCreative()) {
+                    stack.shrink(1);
+                }
+            } else if (hollowBrew) {
+                return InteractionResultHolder.fail(stack);
             }
         }
         return InteractionResultHolder.sidedSuccess(stack, level.isClientSide);
+    }
+
+    private boolean isHollowTearsBrew() {
+        return brewType == BrewType.SOLID_DIRT || brewType == BrewType.SOLID_STONE
+                || brewType == BrewType.SOLID_SAND || brewType == BrewType.SOLID_SANDSTONE
+                || brewType == BrewType.HOLLOW_TEARS_EROSION;
     }
 
     @Override
@@ -239,11 +258,21 @@ public class KettleBrewItem extends Item {
                     e.addEffect(new MobEffectInstance(MobEffects.GLOWING, 400, 0));
                 }
             }
-            case SOLID_DIRT -> OccultumFluidBlocks.HollowTearsBlock.solidifyCascade(level, center, Blocks.DIRT.defaultBlockState());
-            case SOLID_STONE -> OccultumFluidBlocks.HollowTearsBlock.solidifyCascade(level, center, Blocks.STONE.defaultBlockState());
-            case SOLID_SAND -> OccultumFluidBlocks.HollowTearsBlock.solidifyCascade(level, center, Blocks.SAND.defaultBlockState());
-            case SOLID_SANDSTONE -> OccultumFluidBlocks.HollowTearsBlock.solidifyCascade(level, center, Blocks.SANDSTONE.defaultBlockState());
-            case HOLLOW_TEARS_EROSION -> OccultumFluidBlocks.HollowTearsBlock.solidifyCascade(level, center, Blocks.AIR.defaultBlockState());
+            case SOLID_DIRT -> {
+                return OccultumFluidBlocks.HollowTearsBlock.solidifyCascade(level, center, Blocks.DIRT.defaultBlockState()) > 0;
+            }
+            case SOLID_STONE -> {
+                return OccultumFluidBlocks.HollowTearsBlock.solidifyCascade(level, center, Blocks.STONE.defaultBlockState()) > 0;
+            }
+            case SOLID_SAND -> {
+                return OccultumFluidBlocks.HollowTearsBlock.solidifyCascade(level, center, Blocks.SAND.defaultBlockState()) > 0;
+            }
+            case SOLID_SANDSTONE -> {
+                return OccultumFluidBlocks.HollowTearsBlock.solidifyCascade(level, center, Blocks.SANDSTONE.defaultBlockState()) > 0;
+            }
+            case HOLLOW_TEARS_EROSION -> {
+                return OccultumFluidBlocks.HollowTearsBlock.solidifyCascade(level, center, Blocks.AIR.defaultBlockState()) > 0;
+            }
             case CURSED_LEAPING -> {
                 for (LivingEntity e : entities) {
                     e.setDeltaMovement(e.getDeltaMovement().x, 1.4D, e.getDeltaMovement().z);

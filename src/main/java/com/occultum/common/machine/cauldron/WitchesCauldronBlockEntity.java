@@ -552,7 +552,9 @@ public class WitchesCauldronBlockEntity extends BlockEntity {
         };
 
         waterMb = Math.max(0, waterMb - drainPerBottle);
-        ItemStack potionStack = new ItemStack(ModItems.CUSTOM_POTION.get());
+        String familiar = player.getData(ModAttachmentTypes.FAMILIAR_TYPE.get());
+        int outputCount = ("toad".equalsIgnoreCase(familiar) || "frog".equalsIgnoreCase(familiar)) ? 2 : 1;
+        ItemStack potionStack = new ItemStack(ModItems.CUSTOM_POTION.get(), outputCount);
         CauldronPotionData data = new CauldronPotionData(
                 List.copyOf(effects), dispersal, extentBonus, lingerBonus,
                 disableBlockEffects, disableEntityEffects, noParticles, drinkSpeedReduction, colorRgb

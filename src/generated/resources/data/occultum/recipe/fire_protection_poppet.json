@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:magma_cream"
+    },
+    "D": {
+      "item": "occultum:diamond_vapor"
+    },
+    "E": {
+      "item": "occultum:ember_moss"
+    },
+    "P": {
+      "item": "occultum:unbound_poppet"
+    }
+  },
+  "pattern": [
+    " E ",
+    "CPC",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:fire_protection_poppet"
+  }
+}

@@ -9,6 +9,8 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class BloodRoseBlockEntity extends BlockEntity {
     private int storedBlood = 0;
+    private String lastVictimSignature = "";
+    private String lastVictimName = "";
     private static final int MAX_BLOOD = 1000;
 
     public BloodRoseBlockEntity(BlockPos pos, BlockState state) {
@@ -17,6 +19,28 @@ public class BloodRoseBlockEntity extends BlockEntity {
 
     public void addBlood(int amount) {
         this.storedBlood = Math.min(MAX_BLOOD, this.storedBlood + amount);
+        setChanged();
+    }
+
+    public void recordBloodSample(net.minecraft.world.entity.LivingEntity victim, int amount) {
+        this.storedBlood = Math.min(MAX_BLOOD, this.storedBlood + amount);
+        this.lastVictimSignature = victim.getUUID().toString();
+        this.lastVictimName = victim.getName().getString();
+        setChanged();
+    }
+
+    public String getLastVictimSignature() {
+        return lastVictimSignature;
+    }
+
+    public String getLastVictimName() {
+        return lastVictimName;
+    }
+
+    public void clearVictimSample() {
+        this.lastVictimSignature = "";
+        this.lastVictimName = "";
+        this.storedBlood = 0;
         setChanged();
     }
 
@@ -35,11 +59,15 @@ public class BloodRoseBlockEntity extends BlockEntity {
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
         tag.putInt("StoredBlood", storedBlood);
+        tag.putString("LastVictimSignature", lastVictimSignature);
+        tag.putString("LastVictimName", lastVictimName);
     }
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
         this.storedBlood = tag.getInt("StoredBlood");
+        this.lastVictimSignature = tag.getString("LastVictimSignature");
+        this.lastVictimName = tag.getString("LastVictimName");
     }
 }

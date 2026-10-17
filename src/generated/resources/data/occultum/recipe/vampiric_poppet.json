@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "occultum:demonic_blood"
+    },
+    "D": {
+      "item": "occultum:diamond_vapor"
+    },
+    "P": {
+      "item": "occultum:unbound_poppet"
+    },
+    "R": {
+      "item": "occultum:reek_of_misfortune"
+    },
+    "W": {
+      "item": "occultum:tormented_twine"
+    }
+  },
+  "pattern": [
+    " R ",
+    "WPB",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:vampiric_poppet"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "L": {
+      "item": "occultum:rowan_log"
+    },
+    "P": {
+      "item": "occultum:rowan_planks"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "W": {
+      "item": "minecraft:white_wool"
+    }
+  },
+  "pattern": [
+    " W ",
+    "SPS",
+    " L "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:scarecrow_fetish"
+  }
+}

@@ -50,10 +50,19 @@ public class LeechChestBlock extends BaseEntityBlock {
         if (!level.isClientSide) {
             BlockEntity be = level.getBlockEntity(pos);
             if (be instanceof LeechChestBlockEntity chest) {
+                chest.onOpenedByPlayer(player);
                 player.openMenu(chest);
             }
         }
         return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable net.minecraft.world.entity.LivingEntity placer, net.minecraft.world.item.ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
+        if (!level.isClientSide && placer instanceof Player p && level.getBlockEntity(pos) instanceof LeechChestBlockEntity chest) {
+            chest.setOwnerUuid(p.getUUID().toString());
+        }
     }
 
     @Override

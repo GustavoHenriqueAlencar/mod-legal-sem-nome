@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "occultum:diamond_vapor"
+    },
+    "F": {
+      "item": "minecraft:cod"
+    },
+    "P": {
+      "item": "occultum:unbound_poppet"
+    },
+    "W": {
+      "item": "occultum:water_artichoke"
+    }
+  },
+  "pattern": [
+    " W ",
+    "FPF",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:water_protection_poppet"
+  }
+}

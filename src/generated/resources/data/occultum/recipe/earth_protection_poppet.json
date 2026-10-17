@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "occultum:diamond_vapor"
+    },
+    "M": {
+      "item": "occultum:spanish_moss"
+    },
+    "P": {
+      "item": "occultum:unbound_poppet"
+    },
+    "S": {
+      "item": "minecraft:stone"
+    }
+  },
+  "pattern": [
+    " M ",
+    "SPS",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:earth_protection_poppet"
+  }
+}

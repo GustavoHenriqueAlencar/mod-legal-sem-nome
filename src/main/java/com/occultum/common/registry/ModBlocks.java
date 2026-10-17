@@ -9,6 +9,8 @@ import com.occultum.common.botany.tree.MysticLeavesBlock;
 import com.occultum.common.botany.tree.MysticLogBlock;
 import com.occultum.common.botany.tree.MysticSaplingBlock;
 import com.occultum.common.botany.wild.*;
+import com.occultum.common.divination.CrystalBallBlock;
+import com.occultum.common.fetish.FetishBlock;
 import com.occultum.common.fluid.OccultumFluidBlocks;
 import com.occultum.common.machine.brazier.BrazierBlock;
 import com.occultum.common.machine.cauldron.WitchesCauldronBlock;
@@ -17,6 +19,10 @@ import com.occultum.common.machine.kettle.KettleBlock;
 import com.occultum.common.machine.oven.FumeFunnelBlock;
 import com.occultum.common.machine.oven.WitchesOvenBlock;
 import com.occultum.common.machine.spinningwheel.SpinningWheelBlock;
+import com.occultum.common.poppet.PoppetShelfBlock;
+import com.occultum.common.ritual.ChalkGlyphBlock;
+import com.occultum.common.ritual.CircleRitualRegistry;
+import com.occultum.common.ritual.GoldenChalkBlock;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -347,29 +353,73 @@ public class ModBlocks {
                     .strength(0.5F)
                     .noCollission()));
 
-    public static final DeferredBlock<CarpetBlock> RITUAL_CHALK_BLOCK =
-            BLOCKS.register("ritual_chalk_block", () -> new CarpetBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.QUARTZ)
-                    .noCollission()
-                    .instabreak()));
+    public static final DeferredBlock<ChalkGlyphBlock> RITUAL_CHALK_BLOCK =
+            BLOCKS.register("ritual_chalk_block", () -> new ChalkGlyphBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.QUARTZ)
+                            .noCollission()
+                            .instabreak(),
+                    com.occultum.common.ritual.CircleGeometryValidator.ChalkColor.WHITE));
 
-    public static final DeferredBlock<CarpetBlock> GOLDEN_CHALK_BLOCK =
-            BLOCKS.register("golden_chalk_block", () -> new CarpetBlock(BlockBehaviour.Properties.of()
+    public static final DeferredBlock<GoldenChalkBlock> GOLDEN_CHALK_BLOCK =
+            BLOCKS.register("golden_chalk_block", () -> new GoldenChalkBlock(BlockBehaviour.Properties.of()
                     .mapColor(MapColor.GOLD)
                     .noCollission()
                     .instabreak()));
 
-    public static final DeferredBlock<CarpetBlock> INFERNAL_CHALK_BLOCK =
-            BLOCKS.register("infernal_chalk_block", () -> new CarpetBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_RED)
-                    .noCollission()
-                    .instabreak()));
+    public static final DeferredBlock<ChalkGlyphBlock> INFERNAL_CHALK_BLOCK =
+            BLOCKS.register("infernal_chalk_block", () -> new ChalkGlyphBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_RED)
+                            .noCollission()
+                            .instabreak(),
+                    com.occultum.common.ritual.CircleGeometryValidator.ChalkColor.RED));
 
-    public static final DeferredBlock<CarpetBlock> OTHERWHERE_CHALK_BLOCK =
-            BLOCKS.register("otherwhere_chalk_block", () -> new CarpetBlock(BlockBehaviour.Properties.of()
-                    .mapColor(MapColor.COLOR_PURPLE)
-                    .noCollission()
-                    .instabreak()));
+    public static final DeferredBlock<ChalkGlyphBlock> OTHERWHERE_CHALK_BLOCK =
+            BLOCKS.register("otherwhere_chalk_block", () -> new ChalkGlyphBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.COLOR_PURPLE)
+                            .noCollission()
+                            .instabreak(),
+                    com.occultum.common.ritual.CircleGeometryValidator.ChalkColor.PURPLE));
+
+    // Sprint 3: Prateleira de Poppets, Fetiches e Bola de Cristal
+    public static final DeferredBlock<PoppetShelfBlock> POPPET_SHELF =
+            BLOCKS.register("poppet_shelf", () -> new PoppetShelfBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.WOOD)
+                    .strength(2.5F)
+                    .noOcclusion()));
+
+    public static final DeferredBlock<FetishBlock> SCARECROW_FETISH =
+            BLOCKS.register("scarecrow_fetish", () -> new FetishBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.WOOD)
+                            .strength(2.0F)
+                            .noOcclusion(),
+                    FetishBlock.FetishType.SCARECROW));
+
+    public static final DeferredBlock<FetishBlock> TRENT_EFFIGY =
+            BLOCKS.register("trent_effigy", () -> new FetishBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.WOOD)
+                            .strength(2.5F)
+                            .noOcclusion(),
+                    FetishBlock.FetishType.TRENT_EFFIGY));
+
+    public static final DeferredBlock<FetishBlock> WITCHS_LADDER =
+            BLOCKS.register("witchs_ladder", () -> new FetishBlock(
+                    BlockBehaviour.Properties.of()
+                            .mapColor(MapColor.WOOL)
+                            .strength(1.0F)
+                            .noOcclusion(),
+                    FetishBlock.FetishType.WITCHS_LADDER));
+
+    public static final DeferredBlock<CrystalBallBlock> CRYSTAL_BALL =
+            BLOCKS.register("crystal_ball", () -> new CrystalBallBlock(BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.DIAMOND)
+                    .strength(1.5F)
+                    .lightLevel(s -> 7)
+                    .noOcclusion()));
 
     // Fluidos Customizados
     public static final DeferredBlock<OccultumFluidBlocks.FlowingSpiritBlock> FLOWING_SPIRIT_BLOCK =

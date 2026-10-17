@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "F": {
+      "item": "minecraft:feather"
+    },
+    "S": {
+      "item": "minecraft:stick"
+    },
+    "T": {
+      "item": "occultum:tormented_twine"
+    }
+  },
+  "pattern": [
+    "FTF",
+    "STS",
+    "FTF"
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:witchs_ladder"
+  }
+}

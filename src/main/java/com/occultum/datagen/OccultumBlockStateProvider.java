@@ -98,6 +98,13 @@ public class OccultumBlockStateProvider extends BlockStateProvider {
         simpleBlock(ModBlocks.FLOWING_SPIRIT_BLOCK.get(), models().cubeAll("flowing_spirit_block", modLoc("block/flowing_spirit_block")));
         simpleBlock(ModBlocks.HOLLOW_TEARS_BLOCK.get(), models().cubeAll("hollow_tears_block", modLoc("block/hollow_tears_block")));
         simpleBlock(ModBlocks.DISEASE_LIQUID_BLOCK.get(), models().cubeAll("disease_liquid_block", modLoc("block/disease_liquid_block")));
+
+        // Sprint 3 Blocks
+        simpleBlock(ModBlocks.POPPET_SHELF.get(), models().cubeAll("poppet_shelf", modLoc("block/poppet_shelf")));
+        simpleBlock(ModBlocks.SCARECROW_FETISH.get(), models().cubeAll("scarecrow_fetish", modLoc("block/scarecrow_fetish")));
+        simpleBlock(ModBlocks.TRENT_EFFIGY.get(), models().cubeAll("trent_effigy", modLoc("block/trent_effigy")));
+        simpleBlock(ModBlocks.WITCHS_LADDER.get(), models().cubeAll("witchs_ladder", modLoc("block/witchs_ladder")));
+        simpleBlock(ModBlocks.CRYSTAL_BALL.get(), models().cubeAll("crystal_ball", modLoc("block/crystal_ball")));
     }
 
     private void crossBlock(Block block) {

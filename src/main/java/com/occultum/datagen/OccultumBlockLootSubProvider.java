@@ -73,6 +73,13 @@ public class OccultumBlockLootSubProvider extends BlockLootSubProvider {
         dropSelf(ModBlocks.INFERNAL_CHALK_BLOCK.get());
         dropSelf(ModBlocks.OTHERWHERE_CHALK_BLOCK.get());
 
+        // Sprint 3 Blocks
+        dropSelf(ModBlocks.POPPET_SHELF.get());
+        dropSelf(ModBlocks.SCARECROW_FETISH.get());
+        dropSelf(ModBlocks.TRENT_EFFIGY.get());
+        dropSelf(ModBlocks.WITCHS_LADDER.get());
+        dropSelf(ModBlocks.CRYSTAL_BALL.get());
+
         // Drops controlados por lógica específica no bloco
         add(ModBlocks.SPANISH_MOSS.get(), noDrop());
         add(ModBlocks.EMBER_MOSS.get(), noDrop());

@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "occultum:attuned_stone"
+    },
+    "G": {
+      "item": "minecraft:green_wool"
+    },
+    "T": {
+      "item": "occultum:tormented_twine"
+    },
+    "W": {
+      "item": "occultum:rowan_planks"
+    }
+  },
+  "pattern": [
+    "TAT",
+    "GWG",
+    "WWW"
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:poppet_shelf"
+  }
+}

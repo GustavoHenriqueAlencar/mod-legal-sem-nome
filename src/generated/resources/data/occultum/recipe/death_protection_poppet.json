@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "D": {
+      "item": "occultum:drop_of_luck"
+    },
+    "F": {
+      "item": "occultum:focused_will"
+    },
+    "G": {
+      "item": "minecraft:gold_nugget"
+    },
+    "H": {
+      "item": "occultum:hint_of_rebirth"
+    },
+    "P": {
+      "item": "occultum:unbound_poppet"
+    }
+  },
+  "pattern": [
+    " G ",
+    "HPF",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:death_protection_poppet"
+  }
+}

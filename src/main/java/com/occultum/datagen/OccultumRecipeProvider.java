@@ -246,5 +246,237 @@ public class OccultumRecipeProvider extends RecipeProvider {
                 ), RecipeCategory.MISC, Items.CHARCOAL, 0.15F, 200)
                 .unlockedBy("has_rowan_log", has(ModBlocks.ROWAN_LOG.get()))
                 .save(recipeOutput, "occultum:charcoal_from_mystic_logs");
+
+        // =========================================================================
+        // SPRINT 3: POPPETS, PRATELEIRA, FETICHES, TALISMÃ E ITENS DE CÍRCULO
+        // =========================================================================
+
+        // Kit Taglock
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.TOOLS, ModItems.TAGLOCK_KIT.get(), 2)
+                .requires(Items.GLASS_BOTTLE)
+                .requires(Items.IRON_NUGGET)
+                .unlockedBy("has_glass_bottle", has(Items.GLASS_BOTTLE))
+                .save(recipeOutput);
+
+        // Poppet Base (Unbound Poppet) - Seção 5.1 de 06_POPPETS_E_FETISHES.md
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.UNBOUND_POPPET.get(), 1)
+                .pattern("WMN")
+                .pattern("TSW")
+                .pattern(" W ")
+                .define('W', Blocks.WHITE_WOOL)
+                .define('M', ModItems.SPANISH_MOSS.get())
+                .define('N', Items.GOLD_NUGGET)
+                .define('T', ModItems.TORMENTED_TWINE.get())
+                .define('S', Items.WHEAT_SEEDS)
+                .unlockedBy("has_spanish_moss", has(ModItems.SPANISH_MOSS.get()))
+                .save(recipeOutput);
+
+        // 11 Poppets (Seção 5.2 de 06_POPPETS_E_FETISHES.md) + Vinculação com Taglock Kit
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.EARTH_PROTECTION_POPPET.get(), 1)
+                .pattern(" M ")
+                .pattern("SPS")
+                .pattern(" D ")
+                .define('M', ModItems.SPANISH_MOSS.get())
+                .define('S', Blocks.STONE)
+                .define('P', ModItems.UNBOUND_POPPET.get())
+                .define('D', ModItems.DIAMOND_VAPOR.get())
+                .unlockedBy("has_unbound_poppet", has(ModItems.UNBOUND_POPPET.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WATER_PROTECTION_POPPET.get(), 1)
+                .pattern(" W ")
+                .pattern("FPF")
+                .pattern(" D ")
+                .define('W', ModItems.WATER_ARTICHOKE.get())
+                .define('F', Items.COD)
+                .define('P', ModItems.UNBOUND_POPPET.get())
+                .define('D', ModItems.DIAMOND_VAPOR.get())
+                .unlockedBy("has_unbound_poppet", has(ModItems.UNBOUND_POPPET.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.FIRE_PROTECTION_POPPET.get(), 1)
+                .pattern(" E ")
+                .pattern("CPC")
+                .pattern(" D ")
+                .define('E', ModItems.EMBER_MOSS.get())
+                .define('C', Items.MAGMA_CREAM)
+                .define('P', ModItems.UNBOUND_POPPET.get())
+                .define('D', ModItems.DIAMOND_VAPOR.get())
+                .unlockedBy("has_unbound_poppet", has(ModItems.UNBOUND_POPPET.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.HUNGER_PROTECTION_POPPET.get(), 1)
+                .pattern(" R ")
+                .pattern("MPM")
+                .pattern(" D ")
+                .define('R', ModItems.ROWAN_BERRIES.get())
+                .define('M', Items.GLISTERING_MELON_SLICE)
+                .define('P', ModItems.UNBOUND_POPPET.get())
+                .define('D', ModItems.DIAMOND_VAPOR.get())
+                .unlockedBy("has_unbound_poppet", has(ModItems.UNBOUND_POPPET.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.TOOL_PROTECTION_POPPET.get(), 1)
+                .pattern(" B ")
+                .pattern("SPS")
+                .pattern(" D ")
+                .define('B', ModItems.BELLADONNA_FLOWER.get())
+                .define('S', Items.IRON_SWORD)
+                .define('P', ModItems.UNBOUND_POPPET.get())
+                .define('D', ModItems.DIAMOND_VAPOR.get())
+                .unlockedBy("has_unbound_poppet", has(ModItems.UNBOUND_POPPET.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.ARMOR_PROTECTION_POPPET.get(), 1)
+                .pattern(" T ")
+                .pattern("APA")
+                .pattern(" D ")
+                .define('T', ModItems.GOLDEN_THREAD.get())
+                .define('A', Items.IRON_LEGGINGS)
+                .define('P', ModItems.UNBOUND_POPPET.get())
+                .define('D', ModItems.DIAMOND_VAPOR.get())
+                .unlockedBy("has_unbound_poppet", has(ModItems.UNBOUND_POPPET.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.DEATH_PROTECTION_POPPET.get(), 1)
+                .pattern(" G ")
+                .pattern("HPF")
+                .pattern(" D ")
+                .define('G', Items.GOLD_NUGGET)
+                .define('H', ModItems.HINT_OF_REBIRTH.get())
+                .define('P', ModItems.UNBOUND_POPPET.get())
+                .define('F', ModItems.FOCUSED_WILL.get())
+                .define('D', ModItems.DROP_OF_LUCK.get())
+                .unlockedBy("has_unbound_poppet", has(ModItems.UNBOUND_POPPET.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOODOO_PROTECTION_POPPET.get(), 1)
+                .pattern(" O ")
+                .pattern("BPB")
+                .pattern(" D ")
+                .define('O', ModItems.ODOUR_OF_PURITY.get())
+                .define('B', ModItems.BELLADONNA_FLOWER.get())
+                .define('P', ModItems.UNBOUND_POPPET.get())
+                .define('D', ModItems.DIAMOND_VAPOR.get())
+                .unlockedBy("has_unbound_poppet", has(ModItems.UNBOUND_POPPET.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VOODOO_POPPET.get(), 1)
+                .pattern(" R ")
+                .pattern("NPB")
+                .pattern(" D ")
+                .define('R', ModItems.REEK_OF_MISFORTUNE.get())
+                .define('N', ModItems.ICY_NEEDLE.get())
+                .define('P', ModItems.UNBOUND_POPPET.get())
+                .define('B', ModItems.BELLADONNA_FLOWER.get())
+                .define('D', ModItems.DIAMOND_VAPOR.get())
+                .unlockedBy("has_unbound_poppet", has(ModItems.UNBOUND_POPPET.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.VAMPIRIC_POPPET.get(), 1)
+                .pattern(" R ")
+                .pattern("WPB")
+                .pattern(" D ")
+                .define('R', ModItems.REEK_OF_MISFORTUNE.get())
+                .define('W', ModItems.TORMENTED_TWINE.get())
+                .define('P', ModItems.UNBOUND_POPPET.get())
+                .define('B', ModItems.DEMONIC_BLOOD.get())
+                .define('D', ModItems.DIAMOND_VAPOR.get())
+                .unlockedBy("has_unbound_poppet", has(ModItems.UNBOUND_POPPET.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.POPPET_PROTECTION_POPPET.get(), 1)
+                .pattern(" W ")
+                .pattern("EPB")
+                .pattern(" D ")
+                .define('W', ModItems.WHIFF_OF_MAGIC.get())
+                .define('E', ModItems.ENDER_DEW.get())
+                .define('P', ModItems.UNBOUND_POPPET.get())
+                .define('B', ModItems.BELLADONNA_FLOWER.get())
+                .define('D', ModItems.DIAMOND_VAPOR.get())
+                .unlockedBy("has_unbound_poppet", has(ModItems.UNBOUND_POPPET.get()))
+                .save(recipeOutput);
+
+        // Prateleira de Poppets e Bússola (Seção 3 de 06_POPPETS_E_FETISHES.md)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.POPPET_SHELF.get(), 1)
+                .pattern("TAT")
+                .pattern("GWG")
+                .pattern("WWW")
+                .define('T', ModItems.TORMENTED_TWINE.get())
+                .define('A', ModItems.ATTUNED_STONE.get())
+                .define('G', Blocks.GREEN_WOOL)
+                .define('W', ModBlocks.ROWAN_PLANKS.get())
+                .unlockedBy("has_attuned_stone", has(ModItems.ATTUNED_STONE.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.SHELF_COMPASS.get(), 1)
+                .pattern(" A ")
+                .pattern("ACA")
+                .pattern(" A ")
+                .define('A', ModItems.ATTUNED_STONE.get())
+                .define('C', Items.COMPASS)
+                .unlockedBy("has_attuned_stone", has(ModItems.ATTUNED_STONE.get()))
+                .save(recipeOutput);
+
+        // Fetiches Base (Scarecrow, Trent Effigy, Witch's Ladder)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.SCARECROW_FETISH.get(), 1)
+                .pattern(" W ")
+                .pattern("SPS")
+                .pattern(" L ")
+                .define('W', Blocks.WHITE_WOOL)
+                .define('S', Items.STICK)
+                .define('P', ModBlocks.ROWAN_PLANKS.get())
+                .define('L', ModBlocks.ROWAN_LOG.get())
+                .unlockedBy("has_rowan_log", has(ModBlocks.ROWAN_LOG.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.TRENT_EFFIGY.get(), 1)
+                .pattern(" H ")
+                .pattern("AHA")
+                .pattern(" R ")
+                .define('H', ModBlocks.HAWTHORN_LOG.get())
+                .define('A', ModBlocks.ALDER_LOG.get())
+                .define('R', ModBlocks.ROWAN_LOG.get())
+                .unlockedBy("has_rowan_log", has(ModBlocks.ROWAN_LOG.get()))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.WITCHS_LADDER.get(), 1)
+                .pattern("FTF")
+                .pattern("STS")
+                .pattern("FTF")
+                .define('F', Items.FEATHER)
+                .define('T', ModItems.TORMENTED_TWINE.get())
+                .define('S', Items.STICK)
+                .unlockedBy("has_tormented_twine", has(ModItems.TORMENTED_TWINE.get()))
+                .save(recipeOutput);
+
+        // Talismã de Círculo, Pedra de Rumo e Vassoura
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.CIRCLE_TALISMAN.get(), 1)
+                .pattern(" G ")
+                .pattern("GDG")
+                .pattern(" G ")
+                .define('G', Items.GOLD_INGOT)
+                .define('D', Items.DIAMOND)
+                .unlockedBy("has_diamond", has(Items.DIAMOND))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.WAYSTONE.get(), 1)
+                .pattern(" S ")
+                .pattern("SFS")
+                .pattern(" S ")
+                .define('S', Blocks.SMOOTH_STONE)
+                .define('F', Items.FLINT)
+                .unlockedBy("has_flint", has(Items.FLINT))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, ModItems.BROOM.get(), 1)
+                .pattern("  H")
+                .pattern(" S ")
+                .pattern("W  ")
+                .define('H', ModBlocks.HAWTHORN_SAPLING.get())
+                .define('S', Items.STICK)
+                .define('W', Items.WHEAT)
+                .unlockedBy("has_hawthorn_sapling", has(ModBlocks.HAWTHORN_SAPLING.get()))
+                .save(recipeOutput);
     }
 }

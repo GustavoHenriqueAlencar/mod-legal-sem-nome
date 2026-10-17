@@ -3,6 +3,7 @@ package com.occultum.client.event;
 import com.occultum.OccultumMod;
 import com.occultum.client.gui.AltarScreen;
 import com.occultum.client.gui.DistilleryScreen;
+import com.occultum.client.gui.InfusionHudOverlay;
 import com.occultum.client.gui.SpinningWheelScreen;
 import com.occultum.client.gui.WitchesOvenScreen;
 import com.occultum.client.model.*;
@@ -15,6 +16,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
+import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent;
 import net.neoforged.neoforge.client.event.RegisterMenuScreensEvent;
 import net.neoforged.neoforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
@@ -34,11 +36,19 @@ public class ClientModEvents {
     }
 
     @SubscribeEvent
+    public static void registerGuiLayers(RegisterGuiLayersEvent event) {
+        event.registerAboveAll(ResourceLocation.fromNamespaceAndPath(OccultumMod.MOD_ID, "infusion_power_hud"),
+                new InfusionHudOverlay());
+    }
+
+    @SubscribeEvent
     public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
         // Entidades
         event.registerEntityRenderer(ModEntityTypes.MANDRAKE.get(), MandrakeRenderer::new);
         event.registerEntityRenderer(ModEntityTypes.ENT.get(), EntRenderer::new);
         event.registerEntityRenderer(ModEntityTypes.TREEFYD.get(), TreefydRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.TOAD_FAMILIAR.get(), ToadFamiliarRenderer::new);
+        event.registerEntityRenderer(ModEntityTypes.OWL_FAMILIAR.get(), OwlFamiliarRenderer::new);
 
         // Blocos Sprint 1
         event.registerBlockEntityRenderer(ModBlockEntities.ALTAR_BE.get(), AltarRenderer::new);
@@ -51,6 +61,11 @@ public class ClientModEvents {
         event.registerBlockEntityRenderer(ModBlockEntities.KETTLE.get(), KettleRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.WITCHES_CAULDRON.get(), WitchesCauldronRenderer::new);
         event.registerBlockEntityRenderer(ModBlockEntities.BRAZIER.get(), BrazierRenderer::new);
+
+        // Blocos Sprint 3
+        event.registerBlockEntityRenderer(ModBlockEntities.POPPET_SHELF_BE.get(), PoppetShelfRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.FETISH_BE.get(), FetishRenderer::new);
+        event.registerBlockEntityRenderer(ModBlockEntities.CRYSTAL_BALL_BE.get(), CrystalBallRenderer::new);
     }
 
     @SubscribeEvent
@@ -67,6 +82,13 @@ public class ClientModEvents {
         event.registerLayerDefinition(KettleModel.LAYER_LOCATION, KettleModel::createBodyLayer);
         event.registerLayerDefinition(WitchesCauldronModel.LAYER_LOCATION, WitchesCauldronModel::createBodyLayer);
         event.registerLayerDefinition(BrazierModel.LAYER_LOCATION, BrazierModel::createBodyLayer);
+
+        // Sprint 3 Models
+        event.registerLayerDefinition(PoppetShelfModel.LAYER_LOCATION, PoppetShelfModel::createBodyLayer);
+        event.registerLayerDefinition(FetishModel.LAYER_LOCATION, FetishModel::createBodyLayer);
+        event.registerLayerDefinition(CrystalBallModel.LAYER_LOCATION, CrystalBallModel::createBodyLayer);
+        event.registerLayerDefinition(ToadFamiliarModel.LAYER_LOCATION, ToadFamiliarModel::createBodyLayer);
+        event.registerLayerDefinition(OwlFamiliarModel.LAYER_LOCATION, OwlFamiliarModel::createBodyLayer);
     }
 
     @SubscribeEvent

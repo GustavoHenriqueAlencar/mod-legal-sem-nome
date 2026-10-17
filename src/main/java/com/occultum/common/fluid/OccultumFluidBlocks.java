@@ -78,37 +78,53 @@ public class OccultumFluidBlocks {
             }
         }
 
+        public static boolean isHollowTears(BlockState state) {
+            return state.is(ModBlocks.HOLLOW_TEARS_BLOCK.get())
+                    || state.getFluidState().is(ModFluids.HOLLOW_TEARS.get())
+                    || state.getFluidState().is(ModFluids.FLOWING_HOLLOW_TEARS.get());
+        }
+
+        /**
+         * Converte toda a coluna/cascata contígua de Lágrimas Ocas (de até 64 blocos de extensão vertical/conectada)
+         * no bloco indicado (Pedra, Terra, Areia, Arenito ou Ar para erosão). A semente é o fluido mais próximo do
+         * ponto de impacto num raio de 4 blocos.
+         */
         public static int solidifyCascade(Level level, BlockPos startPos, BlockState replacementState) {
             if (level.isClientSide) return 0;
             Queue<BlockPos> queue = new ArrayDeque<>();
             Set<BlockPos> visited = new HashSet<>();
-            queue.add(startPos);
-            visited.add(startPos);
+            BlockPos seed = null;
+            double best = Double.MAX_VALUE;
+            for (BlockPos p : BlockPos.betweenClosed(startPos.offset(-4, -4, -4), startPos.offset(4, 4, 4))) {
+                if (isHollowTears(level.getBlockState(p))) {
+                    double d = p.distSqr(startPos);
+                    if (d < best) {
+                        best = d;
+                        seed = p.immutable();
+                    }
+                }
+            }
+            if (seed == null) return 0;
+            queue.add(seed);
+            visited.add(seed);
             int converted = 0;
+            final int seedY = seed.getY();
 
-            while (!queue.isEmpty() && converted < 256) {
+            while (!queue.isEmpty() && converted < 8192) {
                 BlockPos current = queue.poll();
-                if (Math.abs(current.getY() - startPos.getY()) > 64) {
+                if (Math.abs(current.getY() - seedY) > 64) {
                     continue;
                 }
-                BlockState state = level.getBlockState(current);
-                if (state.is(ModBlocks.HOLLOW_TEARS_BLOCK.get())
-                        || state.getFluidState().is(ModFluids.HOLLOW_TEARS.get())
-                        || state.getFluidState().is(ModFluids.FLOWING_HOLLOW_TEARS.get())) {
-                    level.setBlock(current, replacementState, 3);
-                    converted++;
-
-                    for (Direction dir : Direction.values()) {
-                        BlockPos next = current.relative(dir);
-                        if (!visited.contains(next)) {
-                            BlockState nextState = level.getBlockState(next);
-                            if (nextState.is(ModBlocks.HOLLOW_TEARS_BLOCK.get())
-                                    || nextState.getFluidState().is(ModFluids.HOLLOW_TEARS.get())
-                                    || nextState.getFluidState().is(ModFluids.FLOWING_HOLLOW_TEARS.get())) {
-                                visited.add(next);
-                                queue.add(next);
-                            }
-                        }
+                if (!isHollowTears(level.getBlockState(current))) {
+                    continue;
+                }
+                level.setBlock(current, replacementState, 3);
+                converted++;
+                for (Direction dir : Direction.values()) {
+                    BlockPos next = current.relative(dir);
+                    if (!visited.contains(next) && Math.abs(next.getY() - seedY) <= 64 && isHollowTears(level.getBlockState(next))) {
+                        visited.add(next);
+                        queue.add(next);
                     }
                 }
             }

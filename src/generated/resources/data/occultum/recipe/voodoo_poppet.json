@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "occultum:belladonna_flower"
+    },
+    "D": {
+      "item": "occultum:diamond_vapor"
+    },
+    "N": {
+      "item": "occultum:icy_needle"
+    },
+    "P": {
+      "item": "occultum:unbound_poppet"
+    },
+    "R": {
+      "item": "occultum:reek_of_misfortune"
+    }
+  },
+  "pattern": [
+    " R ",
+    "NPB",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:voodoo_poppet"
+  }
+}

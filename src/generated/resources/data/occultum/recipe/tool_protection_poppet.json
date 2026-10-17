@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "occultum:belladonna_flower"
+    },
+    "D": {
+      "item": "occultum:diamond_vapor"
+    },
+    "P": {
+      "item": "occultum:unbound_poppet"
+    },
+    "S": {
+      "item": "minecraft:iron_sword"
+    }
+  },
+  "pattern": [
+    " B ",
+    "SPS",
+    " D "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:tool_protection_poppet"
+  }
+}

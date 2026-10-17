@@ -5,13 +5,22 @@ import com.occultum.common.botany.crop.TreefydSeedItem;
 import com.occultum.common.botany.powder.MutandisExtremisItem;
 import com.occultum.common.botany.powder.MutandisItem;
 import com.occultum.common.botany.powder.MutatingSprigItem;
+import com.occultum.common.divination.NecroStoneItem;
+import com.occultum.common.infusion.MysticBranchItem;
 import com.occultum.common.item.EarmuffsItem;
+import com.occultum.common.item.EnchantedBroomItem;
 import com.occultum.common.machine.cauldron.AnointingPasteItem;
 import com.occultum.common.machine.cauldron.CauldronCustomPotionItem;
 import com.occultum.common.machine.kettle.KettleBrewItem;
+import com.occultum.common.poppet.PoppetItem;
+import com.occultum.common.poppet.ShelfCompassItem;
+import com.occultum.common.poppet.TaglockKitItem;
+import com.occultum.common.ritual.CircleTalismanItem;
+import com.occultum.common.ritual.SeerStoneItem;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.common.DeferredSpawnEggItem;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -219,8 +228,8 @@ public class ModItems {
                     SwordItem.createAttributes(Tiers.GOLD, 3, -2.4F)
             )));
 
-    public static final DeferredItem<Item> MYSTIC_BRANCH =
-            ITEMS.registerSimpleItem("mystic_branch", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<MysticBranchItem> MYSTIC_BRANCH =
+            ITEMS.register("mystic_branch", () -> new MysticBranchItem(new Item.Properties()));
 
     public static final DeferredItem<EarmuffsItem> EARMUFFS =
             ITEMS.register("earmuffs", () -> new EarmuffsItem(new Item.Properties().durability(120)));
@@ -395,8 +404,8 @@ public class ModItems {
             ITEMS.registerSimpleItem("attuned_stone", new Item.Properties());
     public static final DeferredItem<Item> CHARGED_ATTUNED_STONE =
             ITEMS.registerSimpleItem("charged_attuned_stone", new Item.Properties());
-    public static final DeferredItem<Item> UNBOUND_POPPET =
-            ITEMS.registerSimpleItem("unbound_poppet", new Item.Properties());
+    public static final DeferredItem<PoppetItem> UNBOUND_POPPET =
+            ITEMS.register("unbound_poppet", () -> new PoppetItem(new Item.Properties(), PoppetItem.PoppetType.UNBOUND));
     public static final DeferredItem<Item> GOLDEN_HEART =
             ITEMS.registerSimpleItem("golden_heart", new Item.Properties());
     public static final DeferredItem<Item> SILVER_DUST =
@@ -405,8 +414,8 @@ public class ModItems {
             ITEMS.registerSimpleItem("garlic", new Item.Properties());
     public static final DeferredItem<Item> WAYSTONE =
             ITEMS.registerSimpleItem("waystone", new Item.Properties());
-    public static final DeferredItem<Item> TAGLOCK_KIT =
-            ITEMS.registerSimpleItem("taglock_kit", new Item.Properties());
+    public static final DeferredItem<TaglockKitItem> TAGLOCK_KIT =
+            ITEMS.register("taglock_kit", () -> new TaglockKitItem(new Item.Properties()));
     public static final DeferredItem<Item> PLAYER_COMPASS =
             ITEMS.registerSimpleItem("player_compass", new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> ENDLESS_WATER_BREW =
@@ -481,6 +490,78 @@ public class ModItems {
             ITEMS.register("brew_of_frogs_tongue", () -> new KettleBrewItem(KettleBrewItem.BrewType.FROGS_TONGUE, true, new Item.Properties().stacksTo(16)));
     public static final DeferredItem<KettleBrewItem> BREW_OF_HITCHCOCK =
             ITEMS.register("brew_of_hitchcock", () -> new KettleBrewItem(KettleBrewItem.BrewType.HITCHCOCK, true, new Item.Properties().stacksTo(16)));
+
+    // =========================================================================
+    // SPRINT 3: MAGIA DE CÍRCULO, 11 POPPETS, FETICHES, ADIVINHAÇÃO E FAMILIARES
+    // =========================================================================
+
+    // Catálogo dos 11 Poppets (1.000 pontos de durabilidade - Seção 5 de 06_POPPETS_E_FETISHES.md)
+    public static final DeferredItem<PoppetItem> EARTH_PROTECTION_POPPET =
+            ITEMS.register("earth_protection_poppet", () -> new PoppetItem(new Item.Properties(), PoppetItem.PoppetType.EARTH_PROTECTION));
+    public static final DeferredItem<PoppetItem> WATER_PROTECTION_POPPET =
+            ITEMS.register("water_protection_poppet", () -> new PoppetItem(new Item.Properties(), PoppetItem.PoppetType.WATER_PROTECTION));
+    public static final DeferredItem<PoppetItem> FIRE_PROTECTION_POPPET =
+            ITEMS.register("fire_protection_poppet", () -> new PoppetItem(new Item.Properties(), PoppetItem.PoppetType.FIRE_PROTECTION));
+    public static final DeferredItem<PoppetItem> HUNGER_PROTECTION_POPPET =
+            ITEMS.register("hunger_protection_poppet", () -> new PoppetItem(new Item.Properties(), PoppetItem.PoppetType.HUNGER_PROTECTION));
+    public static final DeferredItem<PoppetItem> TOOL_PROTECTION_POPPET =
+            ITEMS.register("tool_protection_poppet", () -> new PoppetItem(new Item.Properties(), PoppetItem.PoppetType.TOOL_PROTECTION));
+    public static final DeferredItem<PoppetItem> DEATH_PROTECTION_POPPET =
+            ITEMS.register("death_protection_poppet", () -> new PoppetItem(new Item.Properties(), PoppetItem.PoppetType.DEATH_PROTECTION));
+    public static final DeferredItem<PoppetItem> VOODOO_PROTECTION_POPPET =
+            ITEMS.register("voodoo_protection_poppet", () -> new PoppetItem(new Item.Properties(), PoppetItem.PoppetType.VOODOO_PROTECTION));
+    public static final DeferredItem<PoppetItem> VOODOO_POPPET =
+            ITEMS.register("voodoo_poppet", () -> new PoppetItem(new Item.Properties(), PoppetItem.PoppetType.VOODOO));
+    public static final DeferredItem<PoppetItem> VAMPIRIC_POPPET =
+            ITEMS.register("vampiric_poppet", () -> new PoppetItem(new Item.Properties(), PoppetItem.PoppetType.VAMPIRIC));
+    public static final DeferredItem<PoppetItem> POPPET_PROTECTION_POPPET =
+            ITEMS.register("poppet_protection_poppet", () -> new PoppetItem(new Item.Properties(), PoppetItem.PoppetType.POPPET_PROTECTION));
+    public static final DeferredItem<PoppetItem> ARMOR_PROTECTION_POPPET =
+            ITEMS.register("armor_protection_poppet", () -> new PoppetItem(new Item.Properties(), PoppetItem.PoppetType.ARMOR_PROTECTION));
+
+    // Prateleira de Poppets, Bússola, Fetiches e Bola de Cristal
+    public static final DeferredItem<BlockItem> POPPET_SHELF =
+            ITEMS.registerSimpleBlockItem("poppet_shelf", ModBlocks.POPPET_SHELF);
+    public static final DeferredItem<ShelfCompassItem> SHELF_COMPASS =
+            ITEMS.register("shelf_compass", () -> new ShelfCompassItem(new Item.Properties()));
+    public static final DeferredItem<BlockItem> SCARECROW_FETISH =
+            ITEMS.registerSimpleBlockItem("scarecrow_fetish", ModBlocks.SCARECROW_FETISH);
+    public static final DeferredItem<BlockItem> TRENT_EFFIGY =
+            ITEMS.registerSimpleBlockItem("trent_effigy", ModBlocks.TRENT_EFFIGY);
+    public static final DeferredItem<BlockItem> WITCHS_LADDER =
+            ITEMS.registerSimpleBlockItem("witchs_ladder", ModBlocks.WITCHS_LADDER);
+    public static final DeferredItem<BlockItem> CRYSTAL_BALL =
+            ITEMS.registerSimpleBlockItem("crystal_ball", ModBlocks.CRYSTAL_BALL);
+
+    // Relíquias de Círculo, Adivinhação, Necromancia e Vassouras
+    public static final DeferredItem<CircleTalismanItem> CIRCLE_TALISMAN =
+            ITEMS.register("circle_talisman", () -> new CircleTalismanItem(new Item.Properties()));
+    public static final DeferredItem<Item> BOUND_WAYSTONE =
+            ITEMS.registerSimpleItem("bound_waystone", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<SeerStoneItem> SEER_STONE =
+            ITEMS.register("seer_stone", () -> new SeerStoneItem(new Item.Properties()));
+    public static final DeferredItem<NecroStoneItem> NECRO_STONE =
+            ITEMS.register("necro_stone", () -> new NecroStoneItem(new Item.Properties()));
+    public static final DeferredItem<Item> SPECTRAL_STONE =
+            ITEMS.registerSimpleItem("spectral_stone", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> BROOM =
+            ITEMS.registerSimpleItem("broom", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<EnchantedBroomItem> ENCHANTED_BROOM =
+            ITEMS.register("enchanted_broom", () -> new EnchantedBroomItem(new Item.Properties()));
+    public static final DeferredItem<Item> BREW_OF_SOARING =
+            ITEMS.registerSimpleItem("brew_of_soaring", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> BREW_OF_THE_GRAVE =
+            ITEMS.registerSimpleItem("brew_of_the_grave", new Item.Properties().stacksTo(16));
+    public static final DeferredItem<Item> MYSTIC_MIRROR =
+            ITEMS.registerSimpleItem("mystic_mirror", new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> POLYNESIA_CHARM =
+            ITEMS.registerSimpleItem("polynesia_charm", new Item.Properties().stacksTo(1));
+
+    // Ovos de Invocação dos Familiares
+    public static final DeferredItem<DeferredSpawnEggItem> TOAD_FAMILIAR_SPAWN_EGG =
+            ITEMS.register("toad_familiar_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.TOAD_FAMILIAR, 0x3D6E2E, 0x8CA842, new Item.Properties()));
+    public static final DeferredItem<DeferredSpawnEggItem> OWL_FAMILIAR_SPAWN_EGG =
+            ITEMS.register("owl_familiar_spawn_egg", () -> new DeferredSpawnEggItem(ModEntityTypes.OWL_FAMILIAR, 0x6B4C35, 0xD9B382, new Item.Properties()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

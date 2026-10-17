@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "occultum:alder_log"
+    },
+    "H": {
+      "item": "occultum:hawthorn_log"
+    },
+    "R": {
+      "item": "occultum:rowan_log"
+    }
+  },
+  "pattern": [
+    " H ",
+    "AHA",
+    " R "
+  ],
+  "result": {
+    "count": 1,
+    "id": "occultum:trent_effigy"
+  }
+}

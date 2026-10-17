@@ -6,12 +6,16 @@ import com.occultum.common.altar.GrassperBlockEntity;
 import com.occultum.common.botany.wild.BloodRoseBlockEntity;
 import com.occultum.common.botany.wild.CritterSnareBlockEntity;
 import com.occultum.common.botany.wild.LeechChestBlockEntity;
+import com.occultum.common.divination.CrystalBallBlockEntity;
+import com.occultum.common.fetish.FetishBlockEntity;
 import com.occultum.common.machine.brazier.BrazierBlockEntity;
 import com.occultum.common.machine.cauldron.WitchesCauldronBlockEntity;
 import com.occultum.common.machine.distillery.DistilleryBlockEntity;
 import com.occultum.common.machine.kettle.KettleBlockEntity;
 import com.occultum.common.machine.oven.WitchesOvenBlockEntity;
 import com.occultum.common.machine.spinningwheel.SpinningWheelBlockEntity;
+import com.occultum.common.poppet.PoppetShelfBlockEntity;
+import com.occultum.common.ritual.GoldenChalkBlockEntity;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.IEventBus;
@@ -91,6 +95,33 @@ public class ModBlockEntities {
             BLOCK_ENTITIES.register("brazier", () -> BlockEntityType.Builder.of(
                     BrazierBlockEntity::new,
                     ModBlocks.BRAZIER.get()
+            ).build(null));
+
+    // Sprint 3 Block Entities
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<GoldenChalkBlockEntity>> GOLDEN_CHALK_BE =
+            BLOCK_ENTITIES.register("golden_chalk", () -> BlockEntityType.Builder.of(
+                    GoldenChalkBlockEntity::new,
+                    ModBlocks.GOLDEN_CHALK_BLOCK.get()
+            ).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<PoppetShelfBlockEntity>> POPPET_SHELF_BE =
+            BLOCK_ENTITIES.register("poppet_shelf", () -> BlockEntityType.Builder.of(
+                    PoppetShelfBlockEntity::new,
+                    ModBlocks.POPPET_SHELF.get()
+            ).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<FetishBlockEntity>> FETISH_BE =
+            BLOCK_ENTITIES.register("fetish", () -> BlockEntityType.Builder.of(
+                    FetishBlockEntity::new,
+                    ModBlocks.SCARECROW_FETISH.get(),
+                    ModBlocks.TRENT_EFFIGY.get(),
+                    ModBlocks.WITCHS_LADDER.get()
+            ).build(null));
+
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<CrystalBallBlockEntity>> CRYSTAL_BALL_BE =
+            BLOCK_ENTITIES.register("crystal_ball", () -> BlockEntityType.Builder.of(
+                    CrystalBallBlockEntity::new,
+                    ModBlocks.CRYSTAL_BALL.get()
             ).build(null));
 
     public static void register(IEventBus eventBus) {

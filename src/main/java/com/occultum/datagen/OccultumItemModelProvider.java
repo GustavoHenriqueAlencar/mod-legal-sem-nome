@@ -39,6 +39,8 @@ public class OccultumItemModelProvider extends ItemModelProvider {
                 itemFromBlockTexture(item);
             } else if (CHALK_ITEMS.contains(name)) {
                 basicItem(item);
+            } else if (item instanceof net.neoforged.neoforge.common.DeferredSpawnEggItem) {
+                withExistingParent(name, mcLoc("item/template_spawn_egg"));
             } else if (item instanceof BlockItem && !(item instanceof ItemNameBlockItem)) {
                 withExistingParent(name, modLoc("block/" + name));
             } else if (item instanceof SwordItem || item == ModItems.MYSTIC_BRANCH.get()) {
